@@ -6,15 +6,18 @@ layout: default
 {% for post in paginator.posts %}
   <div class="list-item">
     <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
-    <span>Categories: </span>
-    {% for category in post.categories %}
-    <span class="post-category">{{ category }}</span>
-    {% endfor %}
+    <div class="post-categories">
+      <span>Categories: </span>
+      {% for category in post.categories %}
+      <a href="{{ site.baseurl }}/categories/#{{ category }}" class="post-category">{{ category }}</a>
+      {% endfor %}
+    </div>
     <p class="list-excerpt">{{ post.excerpt }}</p>
     <a class="list-read-more" href="{{ post.url }}">READ MORE</a>
   </div>
 {% endfor %}
 
+{% if paginator.total_pages > 1 %}
   <div class="list-pagination">
     {% if paginator.previous_page %}
       <a href="{{ paginator.previous_page_path }}" class="previous">Previous</a>
@@ -28,4 +31,5 @@ layout: default
       <span class="next ">Next</span>
     {% endif %}
   </div>
+{% endif %}
 </article>

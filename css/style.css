@@ -80,13 +80,12 @@ th {
 
 .top-avatar {
   margin: 0 15px;
-  width: 70px;
-  height: 70px;
   float: left;
 }
 
 .top-avatar img {
-  max-width: 100%;
+  width: 70px;
+  height: 70px;
   border-radius: 5px;
 }
 
@@ -102,6 +101,11 @@ th {
 
 .top-description {
   margin-top: 5px;
+  max-width: 300px;
+  height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; 
 }
 
 .top-nav {
@@ -141,16 +145,9 @@ th {
 .post {
   margin: 30px 0;
 }
-
 .post-category {
   color: skyblue;
   font-weight: bold;
-}
-
-.post-tag {
-  border: 1px solid #888;
-  border-radius: 5px;
-  background-color: khaki;
 }
 
 .post-content {
@@ -168,6 +165,11 @@ th {
   color: grey;
   font-style: italic;
   font-family: fantasy;
+}
+
+.post-other ul {
+  margin: 10px 0;
+  list-style-type: none;
 }
 
 .highlight {
@@ -208,6 +210,46 @@ th {
   margin: 20px;
   text-align: center;
   font-size: 28px;
+}
+
+.categories-list {
+  margin: 20px
+}
+
+.categories-list li {
+  margin: 10px 0;
+}
+
+@media screen and (max-width: 640px) {
+  .top-wrap {
+    text-align: center;
+  }
+
+  .top-avatar {
+    float: none;
+  }
+
+  .top-info {
+    width: 100%;
+  }
+
+  .top-description {
+    max-width: 100%;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; 
+  }
+
+  .top-nav {
+    width: 100%;
+    line-height: 24px;
+    font-size: 20px;
+  }
+
+  .top-nav a {
+    margin: 0 5px;
+  }
 }
 
 /* highlight */

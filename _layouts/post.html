@@ -8,20 +8,24 @@ layout: default
   </div>
   <div class="post-categories">
     <span>Categories: </span>
-{% for category in page.categories %}
-    <span class="post-category">{{ category }}</span>
-{% endfor %}
-  </div>
-  <div class="post-tags">
-    <span>Tags:</span>
-{% for tag in page.tags %}
-    <span class="post-tag">{{ tag }}</span>
-{% endfor %}
+    {% for category in page.categories %}
+    <a href="{{ site.baseurl }}/categories/#{{ category }}" class="post-category">{{ category }}</a>
+    {% endfor %}
   </div>
   <div class="post-content">
     {{ content }}
   </div>
   <div class="post-date">
     Written on {{ page.date | date: "%B %e, %Y" }}.
+  </div>
+  <div class="post-other">
+    <ul>
+      {% if page.previous %}
+      <li><span>Previous: </span><a href="{{ page.previous.url }}">{{ page.previous.title }}</a></li>
+      {% endif %}
+      {% if page.next %}
+      <li><span>Next: </span><a href="{{ page.next.url }}">{{ page.next.title }}</a></li>
+      {% endif %}
+    </ul>
   </div>
 </article>
