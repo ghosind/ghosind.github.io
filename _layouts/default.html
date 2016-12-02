@@ -15,31 +15,33 @@
   {% include google_analytics.html %}
 </head>
 <body>
-  <header class="top-wrap">
-    <div class="container">
-      <a href="/" class="top-avatar"><img src="{{ site.baseurl }}/images/logo.jpg" alt="website logo"></a>
-      <div class="top-info">
-        <h1 class="top-name">{{ site.name }}</h1>
-        <p class="top-description">{{ site.description }}</p>
+  <div class="wrap">
+    <header class="top-wrap">
+      <div class="container">
+        <a href="/" class="top-avatar"><img src="{{ site.baseurl }}/images/logo.jpg" alt="website logo"></a>
+        <div class="top-info">
+          <h1 class="top-name">{{ site.name }}</h1>
+          <p class="top-description">{{ site.description }}</p>
+        </div>
+        <nav class="top-nav">
+          <a href="/">Blog</a>
+          <a href="/categories">Categories</a>
+          <a href="/about">About</a>
+        </nav>
       </div>
-      <nav class="top-nav">
-        <a href="/">Blog</a>
-        <a href="/categories">Categories</a>
-        <a href="/about">About</a>
-      </nav>
-    </div>
-  </header>
-  <main class="main-wrap">
-    <div class="container">
-      {{ content }}
-    </div>
-  </main>
-  <footer class="footer-wrap">
-    <div class="container">
-      <div class="footer-links">
-        {% include links.html %}
+    </header>
+    <main class="main-wrap">
+      <div class="container">
+        {{ content }}
       </div>
-    </div>
-  </footer>
+    </main>
+    <footer class="footer-wrap">
+      <div class="container">
+        <div class="footer-links">
+          {% include links.html %}
+        </div>
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
