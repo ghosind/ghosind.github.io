@@ -5,10 +5,11 @@
 - [Jekyll](https://jekyllrb.com/)
 - [Jekyll Now](https://github.com/barryclark/jekyll-now)
 - [MathJax](https://www.mathjax.org/)
-- Email SVG by WEWEKA DESiGNERS
-- Facebook, Twitter and Google+ SVG by Martial Red
-- Linkedin SVG by Gregor Čresnar
-- Github SVG by Zlatko Najdenovski
+- Email icon by WEWEKA DESiGNERS
+- Facebook, Twitter and Google+ icon by Martial Red
+- Linkedin icon by Gregor Čresnar
+- Github icon by Zlatko Najdenovski
+- BStackoverflow icon by Rebin Infotech
 - And all programmers
 
 ## License
