@@ -36,6 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 
 hr {
   margin: 10px;
+  border: 1px solid #eee;
 }
 
 img {
@@ -154,7 +155,6 @@ th {
 }
 
 .post-content {
-  text-indent: 20px;
   margin: 10px 0;
   line-height: 28px;
 }
