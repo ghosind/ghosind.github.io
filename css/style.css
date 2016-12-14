@@ -1,5 +1,5 @@
 * {
-  font-family: sans-serif;
+  font-family: Courier New, Courier, monospace;
   margin: 0;
   padding: 0;
 }
@@ -181,8 +181,8 @@ th {
   background-color: #eee;
   border: 1px solid #ccc;
   box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
-  font-family: Courier New, Courier, monospace;
-  line-height: 22px;
+  font-size: 14px;
+  line-height: 18px;
   margin: 10px 0;
   overflow-x: scroll;
   padding-left: 3px;
@@ -191,6 +191,7 @@ th {
 
 .highlighter-rouge {
   background-color: #eee;
+  font-size: 14px;
 }
 
 .footer-wrap {
@@ -228,7 +229,7 @@ th {
   margin: 10px 0;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
   img {
     max-width: 300px;
   }
@@ -263,6 +264,10 @@ th {
     margin: 0 5px;
   }
 
+  .list-item {
+    margin: 20px 0;
+  }
+
   .post {
     padding: 0 10px;
   }
@@ -277,15 +282,15 @@ th {
 }
 
 /* highlight */
-.cm, .c1 {
-  color: limegreen;
+.c, .cm, .c1 {
+  color: ForestGreen;
 }
 
 .cp {
   color: brown;
 }
 
-.k, .kd {
+.k, .kd, .kn {
   color: MediumVioletRed;
 }
 
@@ -297,8 +302,24 @@ th {
   color: MidnightBlue;
 }
 
+.nc {
+  color: DarkBlue;
+}
+
 .nf {
   color: blue;
+}
+
+.nd {
+  color: blue;
+}
+
+.nl {
+  color: DarkSlateBlue;
+}
+
+.nt {
+  color: BlueViolet;
 }
 
 .s, .s1, .s2, .si {
