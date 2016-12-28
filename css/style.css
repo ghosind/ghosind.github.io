@@ -8,11 +8,6 @@ html, body {
   height: 100%;
 }
 
-.wrap {
-  min-height: 100%;
-  position: relative;
-}
-
 a {
   color: black;
   text-decoration: none;
@@ -72,6 +67,11 @@ th {
   background: #f5f5f5;
   border-bottom: 1px solid #CCC;
   padding: 8px;
+}
+
+.wrap {
+  min-height: 100%;
+  position: relative;
 }
 
 .container {
@@ -275,7 +275,7 @@ th {
   .svg-icon {
     background-size: 30px 30px;
     display: inline-block;
-    margin: 0 5px;
+    margin: 0px;
     height: 30px;
     width: 30px;
   }
