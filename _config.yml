@@ -15,7 +15,7 @@
 # in the templates via {{ site.myvariable }}.
 name: Ghosind
 email: ghosind@gmail.com
-description: 
+description: e = mc<sup>2</sup>(errors = (more codes)<sup>2</sup>)
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://www.ghosind.com" # the base hostname & protocol for your site, e.g. http://example.com
 

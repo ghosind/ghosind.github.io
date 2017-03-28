@@ -9,8 +9,7 @@
 - Facebook, Twitter and Google+ icon by Martial Red
 - Linkedin icon by Gregor Čresnar
 - Github icon by Zlatko Najdenovski
-- BStackoverflow icon by Rebin Infotech
-- And all programmers
+- Stackoverflow icon by Rebin Infotech
 
 ## License
 The repo is published under the MIT License.

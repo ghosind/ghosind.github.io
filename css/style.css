@@ -110,7 +110,7 @@ th {
 .top-description {
   height: 20px;
   margin-top: 5px;
-  max-width: 300px;
+  max-width: 350px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; 
@@ -163,7 +163,12 @@ th {
 }
 
 .post-content img {
-  margin: 10px 0;
+  display: block;
+  margin: 10px auto;
+}
+
+.post-content a {
+  color: deepskyblue;
 }
 
 .post-date {
@@ -232,6 +237,7 @@ th {
 @media screen and (max-width: 768px) {
   img {
     max-width: 300px;
+    width: 100%;
   }
 
   .top-wrap {
@@ -322,7 +328,7 @@ th {
   color: BlueViolet;
 }
 
-.s, .s1, .s2, .si {
+.s, .s1, .s2, .si, .se {
   color: Maroon;
 }
 
