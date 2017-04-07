@@ -76,7 +76,7 @@ th {
 
 .container {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 900px;
   width: 100%;
 }
 
@@ -231,7 +231,7 @@ th {
 }
 
 .categories-list li {
-  margin: 10px 0;
+  margin: 5px 0;
 }
 
 @media screen and (max-width: 768px) {
