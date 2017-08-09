@@ -4,7 +4,7 @@ title: About Me
 permalink: /about/
 ---
 
-在读本科生，坐标苏州，开源爱好者，找工作中。喜欢计算机底层结构、操作系统、编译器。习惯用Linux，语言为C、Java。喜欢开各种坑，填坑速度慢。   
+软件开发工程师，坐标浙江杭州，工作从事Revit二次开发，Linux爱好者。熟悉C、Java、C#、PHP、Python等语言，熟悉桌面以及Web应用的开发，略有涉及移动应用的开发。
 
 ## Contact Me
 E-Mail: [{{ site.email }}](mailto:{{ site.email }})   
