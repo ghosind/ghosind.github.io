@@ -235,6 +235,10 @@ th {
 }
 
 @media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.5em;
+  }
+  
   img {
     max-width: 300px;
     width: 100%;
@@ -261,7 +265,7 @@ th {
   }
 
   .top-nav {
-    font-size: 20px;
+    font-size: 16px;
     line-height: 24px;
     width: 100%;
   }
@@ -271,10 +275,15 @@ th {
   }
 
   .list-item {
-    margin: 20px 0;
+    margin: 10px 5px;
+  }
+
+  .list-excerpt {
+    font-size: 14px;
   }
 
   .post {
+    font-size: 14px;
     padding: 0 10px;
   }
 
