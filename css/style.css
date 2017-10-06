@@ -108,7 +108,7 @@ th {
 }
 
 .top-description {
-  height: 20px;
+  height: 22px;
   margin-top: 5px;
   max-width: 350px;
   overflow: hidden;
@@ -257,7 +257,7 @@ th {
   }
 
   .top-description {
-    height: 20px;
+    height: 22px;
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;

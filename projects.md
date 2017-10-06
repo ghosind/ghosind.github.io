@@ -4,7 +4,7 @@ title: Projects
 permalink: /projects/
 ---
 
-- [HiBIM](http://hibim.pinming.cn/): 基于Revit二次开发的BIM软件，主要参与了其中安装建模部分开发。
+- [HiBIM](http://www.hibim.com/): 基于Revit二次开发的BIM软件，主要参与了其中安装建模部分开发。
 
 ### Open Source Projects
 
