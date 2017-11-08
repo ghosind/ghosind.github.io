@@ -9,7 +9,7 @@ layout: default
     <div class="post-categories">
       <span>Categories: </span>
       {% for category in post.categories %}
-      <a href="{{ site.baseurl }}/categories/#{{ category }}" class="post-category">{{ category }}</a>
+      <a href="{{ site.baseurl }}/categories#{{ category }}" class="post-category">{{ category }}</a>
       {% endfor %}
     </div>
     <p class="list-excerpt">{{ post.excerpt }}</p>
