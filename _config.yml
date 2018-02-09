@@ -14,6 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 name: Ghosind
+author: Chen Su
 email: i@ghosind.com
 description: 西子湖畔代码匠
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -28,7 +29,7 @@ stackoverflow: 2685733
 
 disqus: ghosind
 
-paginate: 10
+paginate: 25
 paginate_path: "/page:num/"
 
 permalink: /:year/:month/:day/:title

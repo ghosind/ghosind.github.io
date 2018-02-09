@@ -2,45 +2,63 @@
 <html>
 <head>
   <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.name }}{% if site.description%} - {{ site.description }}{% endif %}</title>
-{% include meta.html %}
-  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% if page.title %}
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="twitter:title" content="{{ page.title }}">
+  {% else %}
+  <meta property="og:title" content="{{ site.name }}">
+  <meta property="twitter:title" content="{{ site.name }}">
+  {% endif %}{% if page.excerpt %}
+  <meta name="description" content="{{ page.excerpt | strip_html }}">
+  <meta property="og:description" content="{{ page.excerpt | strip_html }}">
+  <meta property="twitter:description" content="{{ page.excerpt | strip_html }}">
+  {% else %}
+  <meta name="description" content="{{ site.description }}">
+  <meta property="og:description" content="{{ site.description }}">
+  <meta property="twitter:description" content="{{ site.description }}">
+  {% endif %}
+  <meta name="author" content="{{ site.name }}">
+  <meta property="og:image" content="{{ site.url }}/images/logo.jpg">
+  <meta property="twitter:image" content="{{ site.url }}/images/logo.jpg">
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/favicon.ico"/>
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/base.min.css" />
+
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
-  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/style.css" />
   <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML" type="text/javascript"></script>-->
   {% include google_analytics.html %}
 </head>
 <body>
-  <div class="wrap">
-    <header class="top-wrap">
-      <div class="container">
-        <a href="/" class="top-avatar"><img src="{{ site.baseurl }}/images/logo.jpg" alt="website logo"></a>
-        <div class="top-info">
-          <h1 class="top-name">{{ site.name }}</h1>
-          <p class="top-description">{{ site.description }}</p>
-        </div>
-        <nav class="top-nav">
-          <a href="/">Blog</a>
-          <a href="/categories">Categories</a>
-          <a href="/projects">Projects</a>
-          <a href="/about">About</a>
-        </nav>
+  <div class="gh-wrapper">
+    <header class="gh-header">
+      <div class="gh-hd-site-info">
+        </a><span class="gh-hd-info-name"><a herf="/"></a>{{ site.name }}</a></span>
+        <span class="gh-hd-info-desc">{{ site.description }}</span>
       </div>
+      <nav class="gh-hd-nav">
+        <ul class="gh-hd-site-nav">
+          <li class="gh-hd-site-nav-item"><a href="/">Blog</a></li>
+          <li class="gh-hd-site-nav-item"><a href="/categories">Categories</a></li>
+          <li class="gh-hd-site-nav-item"><a href="/projects">Projects</a></li>
+          <li class="gh-hd-site-nav-item"><a href="/about">About</a></li>
+        </ul>
+      </nav>
     </header>
-    <main class="main-wrap">
-      <div class="container">
-        {{ content }}
-      </div>
+    <main class="gh-main">
+      {{content}}
     </main>
-    <footer class="footer-wrap">
-      <div class="container">
-        <div class="footer-links">
-          {% include links.html %}
-        </div>
+    <footer class="gh-footer">
+      <div class="gh-ft-copyright">
+        <span class="gh-ft-copyright-text gh-left">Copyright &copy; 2013-2018. Ghosind.com.</span>
+        <span class="gh-ft-copyright-text gh-right">Powered by <a href="https://jekyllrb.com/">Jekyll</a></span>
       </div>
     </footer>
   </div>

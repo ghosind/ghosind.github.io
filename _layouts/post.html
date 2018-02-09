@@ -2,31 +2,38 @@
 layout: default
 ---
 
-<article class="post">
-  <div class="post-title">
+<article class="gh-post">
+  <div class="gh-post-title">
     <h1>{{ page.title }}</h1>
   </div>
-  <div class="post-categories">
-    <span>Categories: </span>
-    {% for category in page.categories %}
-    <a href="{{ site.baseurl }}/categories#{{ category }}" class="post-category">{{ category }}</a>
-    {% endfor %}
+  <div class="gh-post-author">
+    <span>{{ site.author }}</span>
   </div>
-  <div class="post-content">
+  <div class="gh-post-content">
     {{ content }}
   </div>
-  <div class="post-date">
-    Written on {{ page.date | date: "%B %e, %Y" }}.
-  </div>
-  <div class="post-other">
-    <ul>
+  <div class="gh-post-other">
+    <div class="gh-post-date">
+      Written on {{ page.date | date: "%B %e, %Y" }}.
+    </div>
+    <div class="gh-post-categories">
+      <span>Categories: </span>
+      {% for category in page.categories %}
+      <a href="{{ site.baseurl }}/categories#{{ category }}" class="gh-post-category">{{ category }}</a>
+      {% endfor %}
+    </div>
+    <div class="gh-post-tools">
       {% if page.previous %}
-      <li><span>Previous: </span><a href="{{ page.previous.url }}">{{ page.previous.title }}</a></li>
+      <div>
+        <span>Previous: </span><a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+      </div>
       {% endif %}
       {% if page.next %}
-      <li><span>Next: </span><a href="{{ page.next.url }}">{{ page.next.title }}</a></li>
+      <div>
+        <span>Next: </span><a href="{{ page.next.url }}">{{ page.next.title }}</a>
+      </div>
       {% endif %}
-    </ul>
+    </div>
   </div>
   {% include disqus.html %}
 </article>
