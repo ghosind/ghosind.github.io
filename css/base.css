@@ -172,9 +172,18 @@ th {
   line-height: 20px;
 }
 
+.gh-post-content img {
+  display: block;
+  margin: 10px auto;
+}
+
 .gh-post-other {
   margin: 10px 0;
   line-height: 24px;
+}
+
+.gh-post-category, .gh-post-tag {
+  margin: 0 5px;
 }
 
 /* Category */
