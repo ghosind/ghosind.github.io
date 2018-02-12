@@ -209,50 +209,6 @@ pre.highlight {
   font-size: 14px;
 }
 
-.c, .cm, .c1 {
-  color: ForestGreen;
-}
-
-.cp {
-  color: brown;
-}
-
-.k, .kd, .kn {
-  color: MediumVioletRed;
-}
-
-.kt {
-  color: navy;
-}
-
-.nb {
-  color: MidnightBlue;
-}
-
-.nc {
-  color: DarkBlue;
-}
-
-.nf {
-  color: blue;
-}
-
-.nd {
-  color: blue;
-}
-
-.nl {
-  color: DarkSlateBlue;
-}
-
-.nt {
-  color: BlueViolet;
-}
-
-.s, .s1, .s2, .si, .se {
-  color: Maroon;
-}
-
 @media screen and (max-width: 768px) {
   /* reset default styles */
   img {
