@@ -11,14 +11,4 @@ E-Mail: [{{ site.email }}](mailto:{{ site.email }})
 
 ## Social Networks
 
-[Facebook](https://www.facebook.com/{{ site.facebook }})
-
-[Github](https://github.com/{{ site.github }})
-
-[Google+](https://plus.google.com/{{ site.googleplus }})
-
-[Twitter](https://twitter.com/{{ site.twitter }})
-
-[Linkedin](https://linkedin.com/in/{{ site.linkedin }})
-
-[Stack Overflow](http://stackoverflow.com/users/{{ site.stackoverflow }})
+{% include social_networks.html %}
