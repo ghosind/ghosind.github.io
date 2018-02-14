@@ -2,8 +2,8 @@
 layout: post
 title: 研考成绩
 date: 2018-02-09
-categories: [生活随笔]
-tags: [生活随笔]
+categories: [生活杂谈]
+tags: [生活杂谈]
 excerpt: 研考成绩公布及之后打算。
 ---
 

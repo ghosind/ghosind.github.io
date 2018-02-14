@@ -2,8 +2,8 @@
 layout: post
 title: 圣诞快乐
 date: 2017-12-25
-categories: [生活随笔]
-tags: [生活随笔]
+categories: [生活杂谈]
+tags: [生活杂谈]
 excerpt: 圣诞快乐
 ---
 

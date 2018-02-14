@@ -143,6 +143,7 @@ th {
 .gh-ft-copyright-text {
   display: block;
   position: relative;
+  font-size: 14px;
 }
 
 /* Post list */
