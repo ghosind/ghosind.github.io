@@ -5,8 +5,9 @@ MathJax.Hub.Config({
   extensions: ["tex2jax.js","MathMenu.js","MathZoom.js", "AssistiveMML.js", "a11y/accessibility-menu.js"],
   TeX: {
     extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
-  }
+  },
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']], 
+    displayMath: [ ['$$','$$'], ['\[','\]'] ]}
 });
-
 
 MathJax.Ajax.loadComplete("/script/mathjax_config.js");

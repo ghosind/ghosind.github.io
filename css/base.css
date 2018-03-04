@@ -192,6 +192,12 @@ th {
   line-height: 24px;
 }
 
+/* 404 */
+.gh-cant-find {
+  font-size: 2em;
+  text-align: center;
+}
+
 /* Highlight */
 pre.highlight {
   background-color: #eee;
