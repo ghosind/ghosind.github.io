@@ -193,9 +193,14 @@ th {
 }
 
 /* 404 */
-.gh-cant-find {
+.gh-cannot-find {
   font-size: 2em;
   text-align: center;
+}
+
+.gh-404-games {
+  margin-top: 10px;
+  overflow: hidden;
 }
 
 /* Highlight */

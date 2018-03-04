@@ -1,0 +1,41 @@
+<link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/css/2048.css" />
+<div class="g-tool-bar">
+  <div class="g-tool-bar-item">
+    <span>Score:</span>
+    <span id="score"></span>
+  </div>
+  <div class="g-tool-bar-item">
+    <span>Highest:</span>
+    <span id="highest"></span>
+  </div>
+  <div class="g-tool-bar-item">
+    <a class="g-tool-buttom" onclick="new_game();">New Game</a>
+  </div>
+</div>
+<div class="g-frame">
+  <div class="g-row">
+    <div class="g-cell" id="r1c1">1</div>
+    <div class="g-cell" id="r1c2"></div>
+    <div class="g-cell" id="r1c3"></div>
+    <div class="g-cell" id="r1c4"></div>
+  </div>
+  <div class="g-row">
+    <div class="g-cell" id="r2c1"></div>
+    <div class="g-cell" id="r2c2"></div>
+    <div class="g-cell" id="r2c3"></div>
+    <div class="g-cell" id="r2c4"></div>
+  </div>
+  <div class="g-row">
+    <div class="g-cell" id="r3c1"></div>
+    <div class="g-cell" id="r3c2"></div>
+    <div class="g-cell" id="r3c3"></div>
+    <div class="g-cell" id="r3c4"></div>
+  </div>
+  <div class="g-row">
+    <div class="g-cell" id="r4c1"></div>
+    <div class="g-cell" id="r4c2"></div>
+    <div class="g-cell" id="r4c3"></div>
+    <div class="g-cell" id="r4c4"></div>
+  </div>
+</div>
+<script src="{{ site.baseurl }}/script/2048.js" onload="init();"></script>

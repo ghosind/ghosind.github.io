@@ -1,0 +1,71 @@
+.g-tool-bar {
+  width: 100%;
+  margin: 10px auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+.g-tool-bar-item {
+  width: 33%;
+  min-width: 150px;
+  float: left;
+}
+
+.g-tool-buttom {
+  width: 33%;
+  text-align: center;
+  line-height: 20px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.g-frame {
+  border-radius: 10px;
+  margin: 0 auto;
+  width: 400px;
+  padding: 5px;
+  overflow: hidden;
+  border: 1px solid #000;
+}
+
+.g-row {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.g-cell {
+  float: left;
+  text-align: center;
+  font-size: 32px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  width: 94px;
+  height: 94px;
+  line-height: 94px;
+  margin: 2px;
+}
+
+@media screen and (max-width: 520px) {
+  .g-frame {
+    width: 320px;
+  }
+
+  .g-cell {
+    width: 74px;
+    height: 74px;
+    line-height: 74px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .g-frame {
+    width: 280px;
+  }
+
+  .g-cell {
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+  }
+}
