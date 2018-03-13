@@ -10,4 +10,4 @@ MathJax.Hub.Config({
     displayMath: [ ['$$','$$'], ['\[','\]'] ]}
 });
 
-MathJax.Ajax.loadComplete("/script/mathjax_config.js");
+MathJax.Ajax.loadComplete("/assets/script/mathjax_config.js");
