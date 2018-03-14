@@ -12,6 +12,6 @@ permalink: /projects/
 - [Examination System](https://github.com/ghosind/ExamSystem): 基于ASP.NET的开源在线考试系统，个人开发项目。
 - [Jekyll Paper](https://github.com/ghosind/Jekyll-Paper): A simple Jekyll theme.
 
-## Games in Blog
+## Games
 
 - [2048](/games/2048) (PC Only)
