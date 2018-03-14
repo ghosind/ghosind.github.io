@@ -157,6 +157,7 @@ th {
 
 .gh-posts-list-item-name {
   font-weight: 300;
+  width: calc(100% - 100px);
 }
 
 .gh-list-pagination {

@@ -22,7 +22,7 @@ excerpt: 使用Java的反射库Java.lang.reflect分析类中的Field、Construct
 
 类的访问修饰符通常为public或不使用任何关键字，我们可以使用`getModifiers()`得知类的修饰符。使用`getModifiers()`得到的修饰符是一个int类型的数值，它将对应着它是由哪些修饰符构成的，如未使用修饰符其值将为0，而public的值为1，static为8。若是由多个修饰符共同组成，则获得的值为修饰符的值相加，如public static为9。虽然这个数值代表着它是由对应的修饰符构成的，但输出它并不是非常地直观，所以可以使用Modifiers.toString()将其输出为对应的关键字。
 
-将类的名称转换为字符串可以直接使用`toString()`方法，或者可以使用`getName()`方法，两者的区别为Class类的`toString()`方法会在该类型名称前添加“class ”。得到类的父类可以使用Class类的`getSuperClass()`方法，它将得到一个Class类实例，也可以使用`getName()`将它转换为字符串。得到类实现的接口可以通过`getInterfaces()`或`getGenericInterfaces()`方法获得，两者的区别为`getInterfaces()`将得到该类实现的所有接口，返回类型为Class\[\]，而`getGenericInterfaces()`只得到由该类直接实现的接口，返回类型为Type\[\]。
+将类的名称转换为字符串可以直接使用`toString()`方法，或者可以使用`getName()`方法，两者的区别为Class类的`toString()`方法会在该类型名称前添加“class ”。得到类的父类可以使用Class类的`getSuperClass()`方法，它将得到一个Class类实例，也可以使用`getName()`将它转换为字符串。得到类实现的接口可以通过`getInterfaces()`或`getGenericInterfaces()`方法获得，两者的区别为`getInterfaces()`将得到该类实现的所有接口，返回类型为`Class[]`，而`getGenericInterfaces()`只得到由该类直接实现的接口，返回类型为`Type[]`。
 
 下面将通过方法printClass输出某个类的定义。
 

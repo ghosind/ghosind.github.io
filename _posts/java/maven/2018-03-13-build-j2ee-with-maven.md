@@ -3,7 +3,7 @@ layout: post
 title: IntelliJ IDEA社区版通过Maven创建J2EE项目
 date: 2018-03-13
 categories: [Java]
-tags: [J2EE]
+tags: [J2EE, IDEA, Maven]
 excerpt: 通过Maven在默认不支持J2EE的IntelliJ IDEA社区版中创建J2EE项目。
 ---
 
