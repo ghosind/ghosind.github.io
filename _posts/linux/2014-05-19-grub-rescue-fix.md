@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Grub Rescue修复
+title: Grub Rescue修复引导
 date: 2014-05-19
 categories: [Linux]
 tags: [Linux, Grub]
-excerpt: 
+excerpt: 使用Grub Rescue修复系统引导。
 ---
 
 ## 前言

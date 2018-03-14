@@ -1,6 +1,6 @@
 ---
 layout: post
-title: C语言从零开始之Hello World
+title: C语言从零开始之一：Hello World
 date: 2016-12-29
 categories: [C]
 tags: [C]
