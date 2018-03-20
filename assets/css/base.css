@@ -125,6 +125,7 @@ th {
 /* Main */
 .gh-main {
   width: 95%;
+  min-height: calc(100vh - 153px);
   margin: 10px auto;
   overflow: hidden;
 }
