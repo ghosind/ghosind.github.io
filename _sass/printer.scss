@@ -1,0 +1,39 @@
+/*
+ * printer.scss
+ * Author: Chen Su <i@ghosind.com>
+ */
+
+@charset "utf-8";
+
+@media print {
+  /* Header */
+  .gh-header {
+    display: none;
+  }
+
+  /* Footer */
+  .gh-footer {
+    display: none;
+  }
+
+  /* Post */
+  .gh-post-title {
+    text-align: center;
+  }
+
+  .gh-post-author {
+    display: block;
+    text-align: center;
+  }
+
+  .gh-post-other {
+    display: none;
+  }
+
+  /* Highlight */
+  pre.highlight {
+    overflow-x: hidden;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+}

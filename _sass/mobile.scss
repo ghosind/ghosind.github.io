@@ -1,0 +1,26 @@
+/*
+ * mobile.scss
+ * Author: Chen Su <i@ghosind.com>
+ */
+
+@charset "utf-8";
+
+@import "common";
+
+@media screen and (max-width: $media-break-large) {
+  /* reset default styles */
+  img {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* Posts list */
+  .gh-list-pagination {
+    margin: 10px 0 5px 0;
+  }
+
+  /* Footer */
+  .gh-ft-copyright .gh-left, .gh-ft-copyright .gh-right {
+    float: none;
+  }
+}

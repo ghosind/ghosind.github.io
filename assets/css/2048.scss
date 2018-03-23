@@ -1,0 +1,91 @@
+---
+---
+
+/*
+ * 2048.scss
+ * Author: Chen Su <i@ghosind.com>
+ */
+
+@charset "utf-8";
+@import "common";
+
+$large-frame: 400px;
+$large-width: 94px;
+
+$medium-frame: 320px;
+$medium-width: 74px;
+
+$small-frame: 280px;
+$small-width: 64px;
+
+.g-tool-bar {
+  width: 100%;
+  margin: 10px auto;
+  overflow: hidden;
+  text-align: center;
+}
+
+.g-tool-bar-item {
+  float: left;
+  width: 33%;
+  min-width: 150px;
+}
+
+.g-tool-buttom {
+  width: 33%;
+  border: 1px solid #000;
+  border-radius: 5px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.g-frame {
+  width: $large-frame;
+  margin: 0 auto;
+  padding: 5px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.g-row {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.g-cell {
+  float: left;
+  width: $large-width;
+  height: $large-width;
+  margin: 2px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  line-height: $large-width;
+  font-size: 32px;
+  text-align: center;
+}
+
+@media screen and (max-width: $media_break_medium) {
+  .g-frame {
+    width: $medium-frame;
+  }
+
+  .g-cell {
+    width: $medium-width;
+    height: $medium-width;
+    line-height: $medium-width;
+  }
+}
+
+@media screen and (max-width: $media_break_small) {
+  .g-frame {
+    width: $small-frame;
+  }
+
+  .g-cell {
+    width: $small-width;
+    height: $small-width;
+    line-height: $small-width;
+  }
+}

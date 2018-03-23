@@ -1,14 +1,27 @@
+---
+---
+
+/*
+ * about.scss
+ * Author: Chen Su <i@ghosind.com>
+ */
+
+@charset "utf-8";
+
+$svg-width: 40px;
+$svg-height: 40px;
+
 .gh-about-links-bar {
   margin: 10px 0;
   text-align: center;
 }
 
 .gh-svg-icon {
-  background-size: 40px 40px;
   display: inline-block;
-  height: 40px;
+  width: $svg-width;
+  height: $svg-height;
   margin: 0 5px;
-  width: 40px;
+  background-size: $svg-width $svg-height;
 }
 
 /* svg icon */

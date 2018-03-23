@@ -29,14 +29,14 @@ layout: default
       {% endfor %}
     </div>
     <div class="gh-post-tools">
-      {% if page.previous %}
-      <div>
-        <span>Previous: </span><a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
-      </div>
-      {% endif %}
       {% if page.next %}
       <div>
         <span>Next: </span><a href="{{ page.next.url }}">{{ page.next.title }}</a>
+      </div>
+      {% endif %}
+      {% if page.previous %}
+      <div>
+        <span>Previous: </span><a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
       </div>
       {% endif %}
     </div>

@@ -36,6 +36,10 @@ permalink: /:year/:month/:day/:title
 
 google_analytics: UA-87927057-1
 
+sass:
+  sass_dir: _sass
+  style: compressed
+
 # Build settings
 markdown: kramdown
 gems:
