@@ -4,8 +4,6 @@ title: Projects
 permalink: /projects/
 ---
 
-- [HiBIM](http://www.hibim.com/): 基于Revit二次开发的BIM软件，主要参与了其中安装建模部分开发。
-
 ## Open Source Projects
 
 - [hp-union.com](https://github.com/gentlespoon/hp-union.com): 多人合作的PHP开源论坛系统，hp-union.com站点源码，主要参与了后端开发以及产品策划。
