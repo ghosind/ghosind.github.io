@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<article>
+<div class="gh-posts-list-wrapper">
 {% for post in paginator.posts %}
   <div class="gh-posts-list-item">
     <span class="gh-posts-list-item-name gh-left"><a href="{{ post.url }}">{{ post.title }}</a></span>
@@ -25,4 +25,4 @@ layout: default
     {% endif %}
   </div>
 {% endif %}
-</article>
+</div>
