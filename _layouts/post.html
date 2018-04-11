@@ -19,7 +19,7 @@ layout: default
     <div class="gh-post-categories">
       <span>Categories:</span>
       {% for category in page.categories %}
-      <a href="{{ site.baseurl }}/categories#{{ category }}" class="gh-post-category">{{ category }}</a>
+      <a href="{{ site.baseurl }}/category/{{ category | slugify }}" class="gh-post-category">{{ category }}</a>
       {% endfor %}
     </div>
     <div class="gh-post-tags">

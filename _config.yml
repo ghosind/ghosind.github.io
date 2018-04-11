@@ -34,6 +34,14 @@ paginate_path: "/page:num/"
 
 permalink: /:year/:month/:day/:title
 
+jekyll-archives:
+  enabled: 
+    - categories
+  layouts:
+    category: archive
+  permalinks:
+    category: /category/:name/
+
 google_analytics: UA-87927057-1
 
 sass:
@@ -42,10 +50,11 @@ sass:
 
 # Build settings
 markdown: kramdown
-gems:
+plugins:
   - jekyll-feed
   - jekyll-paginate
   - jekyll-sitemap
+  - jekyll-archives
 exclude:
   - Gemfile
   - Gemfile.lock
