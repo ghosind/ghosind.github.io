@@ -4,9 +4,8 @@
 </div>
 <nav class="gh-hd-nav">
   <ul class="gh-hd-site-nav">
-    <li class="gh-hd-site-nav-item"><a href="/">Blog</a></li>
-    <li class="gh-hd-site-nav-item"><a href="/categories">Categories</a></li>
-    <li class="gh-hd-site-nav-item"><a href="/projects">Projects</a></li>
-    <li class="gh-hd-site-nav-item"><a href="/about">About</a></li>
+  {% for item in site.data.menus %}
+    <li class="gh-hd-site-nav-item"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.title }}</a></li>
+  {% endfor %}
   </ul>
 </nav>
