@@ -14,7 +14,7 @@ layout: default
   </div>
   <div class="gh-post-other">
     <div class="gh-post-date">
-      Written on {{ page.date | date: "%B %e, %Y" }}.
+      Written on {{ page.date | date: "%B %e, %Y" }}{% if page.update %}, Updated on {{ page.update | date: "%B %e, %Y" }}{% endif %}.
     </div>
     <div class="gh-post-categories">
       <span>Categories:</span>
