@@ -1,10 +1,10 @@
 ---
 layout: post
-title: EC2中Redis迁移至ElastiCache
+title: EC2中Redis迁移至ElastiCache记录
 date: 2018-10-03
 categories: AWS
 tags: [AWS, Redis, ElastiCache]
-excerpt: 将EC2中的Redis服务迁移至ElastiCache中。
+excerpt: 记录将EC2中的Redis服务迁移至ElastiCache中的过程。
 ---
 
 ## 背景介绍
