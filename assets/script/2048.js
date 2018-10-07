@@ -9,6 +9,8 @@ var score = 0;
 var highest_score = 0;
 var empty_cells = new Array();
 var last_move_location = -1;
+var xStart = null;
+var yStart = null;
 
 function init() {
   new_game();
@@ -16,6 +18,15 @@ function init() {
     var code = event.keycode || event.which || event.char;
     move(code);
   };
+
+  
+  var frames = document.getElementsByClassName("g-frame");
+  if (!!frames && frames.length > 0) {
+    var frame = frames[0];
+    
+    frame.addEventListener("touchstart", touchStartHander, false);
+    frame.addEventListener("touchmove", touchMoveHandler, false);
+  }
 }
 
 function new_game() {
@@ -164,4 +175,41 @@ function check_empty() {
       }
     }
   }
+}
+
+function touchStartHander(event) {
+  event.preventDefault();
+
+  xStart = event.touches[0].clientX;
+  yStart = event.touches[0].clientY;
+}
+
+function touchMoveHandler(event) {
+  if (!xStart || !yStart) {
+    return ;
+  }
+
+  event.preventDefault();
+
+  var xEnd = event.touches[0].clientX;
+  var yEnd = event.touches[0].clientY;
+
+  var xDiff = xEnd - xStart;
+  var yDiff = yEnd - yStart;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    if (xDiff > 0) {
+      move(39)
+    } else {
+      move(37);
+    }
+  } else {
+    if (yDiff > 0) {
+      move(40);
+    } else {
+      move(38);
+    }
+  }
+
+  xStart = yStart = null;
 }

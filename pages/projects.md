@@ -12,4 +12,4 @@ permalink: /projects/
 
 ## Games
 
-- [2048](/games/2048) (PC Only)
+- [2048](/games/2048)
