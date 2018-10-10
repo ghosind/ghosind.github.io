@@ -21,7 +21,9 @@
 <meta name="author" content="{{ site.name }}">
 <meta property="og:image" content="{{ site.url }}/assets/images/logo.jpg">
 <meta property="twitter:image" content="{{ site.url }}/assets/images/logo.jpg">
-
+{% if site.keywords or page.tags %}
+<meta name="keywords" content="{% if page.tags %}{{ page.tags | join: ',' }}{% else %}{{ site.keywords | join: ',' }}{% endif %}">
+{% endif %}
 <link rel="shortcut icon" href="/favicon.ico" />
 <link rel="apple-touch-icon" href="/favicon.ico"/>
 <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
