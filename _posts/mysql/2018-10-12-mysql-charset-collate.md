@@ -2,6 +2,7 @@
 layout: post
 title: MySQL查看、修改字符集及Collation
 date: 2018-10-12
+update: 2018-10-13
 categories: [MySQL]
 tags: [MySQL, charset, collation]
 excerpt: 查看并修改MySQL中的字符集及Collation。
@@ -12,6 +13,10 @@ excerpt: 查看并修改MySQL中的字符集及Collation。
 在使用MySQL的过程中，可能会出现初始设计使用的字符集或Collation不符合当前需求的情况。如使用utf8的表（MySQL中的utf8即utf8mb3）要支持emoji，而utf8mb3不支持emoji（emoji需要4个字节，而utf8mb3最长只支持3个字节），所以需要将字符集修改为utf8mb4。
 
 Collation即排列字符集，每个字符集都有对应一个或多个排列字符集。如某列使用utf8mb4_unicode_ci，当需要使用emoji搜索的时候，因为utf8mb4_unicode_ci可替换字符的原因，就可能出现查找出错误数据的结果。
+
+## 真实事例
+
+在公司项目中有个需要生成唯一emoji序列的需求。开发过程中没发现问题，在测试的过程中出现了因为重复插入失败的情况，但是在插入前已经查询过数据库没有发现有重复。为确认是否是程序的问题，直接通过prisma插入一个不存在的序列，但是还是出现了插入失败的情况。查询了数据库中该表的结构，发现使用的字符集是utf8mb4，确认了是支持emoji的。在纠结了快半天的时间后，发现了该列的排列字符集为utf8mb4_unicode_ci，该排列字符集会认为一些特定的emoji是可替代的导致了这个问题，在将该列的Collation修改为utf8mb4_bin后解决了问题。
 
 ## 获取当前支持的全部字符集及Collation
 
