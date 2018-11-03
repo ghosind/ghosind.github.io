@@ -7,6 +7,7 @@ permalink: /projects/
 ## Contributed Projects
 
 - [Upterm](https://github.com/railsware/upterm): A terminal emulator for the 21st century.
+- [kue-scheduler](https://github.com/lykmapipo/kue-scheduler): A job scheduler utility for kue, backed by redis and built for node.js.
 
 ## Open Source Projects
 

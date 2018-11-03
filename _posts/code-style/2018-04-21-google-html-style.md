@@ -2,8 +2,8 @@
 layout: post
 title: Google编程规范之HTML
 date: 2018-04-21
-categories: [编程规范]
-tags: [编程规范]
+categories: [Code Styles]
+tags: [Code Styles]
 excerpt: 翻译HTML谷歌编程规范
 ---
 
