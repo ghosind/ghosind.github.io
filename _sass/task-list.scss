@@ -1,0 +1,15 @@
+/*
+ * wrapper.scss
+ * Author: Chen Su <i@ghosind.com>
+ */
+
+@charset "utf-8";
+
+.task-list-item {
+  list-style: none;
+}
+
+.task-list-item-checkbox {
+  position: relative;
+  right: 15px;
+}
