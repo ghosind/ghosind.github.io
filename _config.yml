@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-name: Ghosind
+title: Ghosind
 author: Chen Su
 email: i@ghosind.com
 description: Focus on Computer Science, Mathematics, and Electrics
