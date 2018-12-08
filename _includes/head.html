@@ -1,24 +1,7 @@
-<title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}{% if site.description%} - {{ site.description }}{% endif %}</title>
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-{% if page.title %}
-<meta property="og:title" content="{{ page.title }}">
-<meta property="twitter:title" content="{{ page.title }}">
-{% else %}
-<meta property="og:title" content="{{ site.title }}">
-<meta property="twitter:title" content="{{ site.title }}">
-{% endif %}{% if page.excerpt %}
-<meta name="description" content="{{ page.excerpt | strip_html }}">
-<meta property="og:description" content="{{ page.excerpt | strip_html }}">
-<meta property="twitter:description" content="{{ page.excerpt | strip_html }}">
-{% else %}
-<meta name="description" content="{{ site.description }}">
-<meta property="og:description" content="{{ site.description }}">
-<meta property="twitter:description" content="{{ site.description }}">
-{% endif %}
-<meta name="author" content="{{ site.title }}">
+{% seo %}
 <meta property="og:image" content="{{ site.url }}/assets/images/logo.jpg">
 <meta property="twitter:image" content="{{ site.url }}/assets/images/logo.jpg">
 {% if site.keywords or page.tags %}{% assign keywords = page.tags | concat: site.keywords %}
@@ -29,8 +12,6 @@
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
 <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/base.css" />
 <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/assets/css/highlight.css" />
-
-<link rel="canonical" href="{{ page.url | prepend: site.url }}">
 
 <!--[if lt IE 9]>
   <script async src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
