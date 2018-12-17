@@ -3,7 +3,7 @@ layout: post
 title: 利用Github+Jekyll搭建个人博客
 date: 2018-03-02
 categories: [Jekyll]
-tags: [Jekyll]
+tags: [Jekyll, Github, Github Pages, Blog]
 excerpt: 利用免费的Github Pages服务以及Jekyll搭建一个静态的个人博客。
 ---
 

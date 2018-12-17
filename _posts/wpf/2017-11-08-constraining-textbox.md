@@ -3,7 +3,7 @@ layout: post
 title: WPF开发之限制输入的控件
 date: 2017-11-08
 categories: [WPF]
-tags: [WPF]
+tags: [WPF, TextInput, TextBox, ComboBox, Reflection]
 excerpt: 通过事件及正则表达式构建一个只能输入限定格式的TextBox及ComboBox。
 ---
 

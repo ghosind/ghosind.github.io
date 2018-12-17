@@ -3,7 +3,7 @@ layout: post
 title: C语言从零开始0X00：Hello World
 date: 2016-12-29
 categories: [C]
-tags: [C]
+tags: [C, Tutorial, Getting Start, Hello World]
 excerpt: 通过经典的Hello World程序简单介绍C语言。
 ---
 

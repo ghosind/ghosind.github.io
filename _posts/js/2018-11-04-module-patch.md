@@ -3,7 +3,7 @@ layout: post
 title: 使用patch-package修改Node.js依赖包内容
 date: 2018-11-04
 categories: [Node.js]
-tags: [Node.js, Patch]
+tags: [Node.js, Patch, NPM, Yarn]
 excerpt: 使用patch-package修改依赖包内容，为依赖包创建补丁。
 ---
 

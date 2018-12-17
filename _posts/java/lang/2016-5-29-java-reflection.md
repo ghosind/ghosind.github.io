@@ -3,7 +3,7 @@ layout: post
 title: 初识Java反射——使用反射分析类
 date: 2016-5-29
 categories: Java
-tags: 反射 Java
+tags: [Reflection, Java]
 excerpt: 使用Java的反射库Java.lang.reflect分析类中的Field、Constructor以及Method。
 ---
 

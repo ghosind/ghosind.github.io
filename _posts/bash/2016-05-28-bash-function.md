@@ -3,7 +3,7 @@ layout: post
 title: Shell Script函数
 date: 2016-5-28
 categories: ShellScript
-tags: Linux Bash ShellScript
+tags: [Linux, Bash, ShellScript, Function]
 excerpt: Shell Script中函数的定义及使用。
 ---
 

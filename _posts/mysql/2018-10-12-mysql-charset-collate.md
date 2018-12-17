@@ -2,9 +2,8 @@
 layout: post
 title: MySQL查看、修改字符集及Collation
 date: 2018-10-12
-update: 2018-10-13
 categories: [MySQL]
-tags: [MySQL, charset, collation]
+tags: [MySQL, Charset, Collation]
 excerpt: 查看并修改MySQL中的字符集及Collation。
 ---
 

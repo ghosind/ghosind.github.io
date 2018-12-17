@@ -3,7 +3,7 @@ layout: post
 title: Shell Script条件及控制语句
 date: 2016-4-5
 categories: ShellScript
-tags: Linux Bash ShellScript
+tags: [Linux, Bash, ShellScript, Control Flow]
 excerpt: Shell Script中的条件及控制语句，控制语句包括if、for、while、until、case、break、continue。
 ---
 

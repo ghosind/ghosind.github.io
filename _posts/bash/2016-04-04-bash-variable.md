@@ -3,7 +3,7 @@ layout: post
 title: Shell Script介绍及变量使用
 date: 2016-4-4
 categories: ShellScript
-tags: Linux Bash ShellScript
+tags: [Linux, Bash, ShellScript, Variable]
 excerpt: Shell Script的介绍、变量以及变量的使用。
 ---
 

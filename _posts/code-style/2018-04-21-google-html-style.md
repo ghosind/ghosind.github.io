@@ -3,7 +3,7 @@ layout: post
 title: Google编程规范之HTML
 date: 2018-04-21
 categories: [Code Styles]
-tags: [Code Styles]
+tags: [Code Styles, Google, HTML]
 excerpt: 翻译HTML谷歌编程规范
 ---
 
