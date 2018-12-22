@@ -5,6 +5,10 @@
 
 @charset "utf-8";
 
+.gh-print-author {
+  display: none;
+}
+
 @media print {
   /* Header */
   .gh-header {
@@ -21,7 +25,7 @@
     text-align: center;
   }
 
-  .gh-post-author {
+  .gh-print-author {
     display: block;
     text-align: center;
   }
