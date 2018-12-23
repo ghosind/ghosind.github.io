@@ -5,32 +5,28 @@
 
 @charset "utf-8";
 
-.gh-print-author {
+.print-post-author {
   display: none;
 }
 
 @media print {
   /* Header */
-  .gh-header {
+  .container-header {
     display: none;
   }
 
   /* Footer */
-  .gh-footer {
+  .container-footer {
     display: none;
   }
 
   /* Post */
-  .gh-post-title {
-    text-align: center;
-  }
-
-  .gh-print-author {
+  .print-post-author {
     display: block;
     text-align: center;
   }
 
-  .gh-post-other {
+  .post-info {
     display: none;
   }
 

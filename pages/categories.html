@@ -4,12 +4,12 @@ title: Categories
 permalink: /categories/
 ---
 
-<article class="gh-post">
-  <h1 class="gh-post-title">Categories</h1>
-  <ul class="gh-categories-list">
+<article class="container-page">
+  <h1 class="page-title">Categories</h1>
+  <ul class="categories-list">
     {% for category in site.categories %}
       <li id="{{ category | first }}">{{ category | first }}
-        <ul class="gh-category-list">
+        <ul class="category-list">
         {% assign sorted_posts = site.posts | sort: 'date' %}{% for post in sorted_posts %}{%if post.categories contains category[0]%}
           <li><span>{{ post.date | date: "%B %e, %Y" }}: </span><a href="{{ post.url }}">{{ post.title }}</a></li>
         {% endif %}{% endfor %}

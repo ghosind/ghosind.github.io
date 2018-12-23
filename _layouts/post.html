@@ -2,40 +2,40 @@
 layout: default
 ---
 
-<article class="gh-post">
-  <div class="gh-post-title">
+<article class="container-post">
+  <div class="post-title">
     <h1>{{ page.title }}</h1>
   </div>
   {% if site.author %}
-    <div class="gh-post-author gh-print-author">
+    <div class="post-author print-post-author">
       <span>{{ site.author }}</span>
     </div>
   {% endif %}
-  <div class="gh-post-content">
+  <div class="post-content">
     {{ content }}
   </div>
-  <div class="gh-post-other">
-    <div class="gh-post-date">
+  <div class="post-info">
+    <div class="post-date">
       Written on {{ page.date | date: "%B %e, %Y" }}{% if page.update %}, Updated on {{ page.update | date: "%B %e, %Y" }}{% endif %}.
     </div>
     {% if site.author %}
-    <div class="gh-post-author">
+    <div class="post-author">
       <span>Author: {{ site.author }}</span>
     </div>
     {% endif %}
-    <div class="gh-post-categories">
+    <div class="post-categories">
       <span>Categories:</span>
       {% for category in page.categories %}
-      <a href="{{ site.baseurl }}/categories#{{ category }}" class="gh-post-category">{{ category }}</a>
+      <a href="{{ site.baseurl }}/categories#{{ category }}" class="post-category">{{ category }}</a>
       {% endfor %}
     </div>
-    <div class="gh-post-tags">
+    <div class="post-tags">
       <span>Tags:</span>
       {% for tag in page.tags %}
-      <span class="gh-post-tag">{{ tag }}</span>
+      <span class="post-tag">{{ tag }}</span>
       {% endfor %}
     </div>
-    <div class="gh-post-tools">
+    <div class="post-tools">
       {% if page.next %}
       <div>
         <span>Next: </span><a href="{{ page.next.url }}">{{ page.next.title }}</a>
@@ -47,11 +47,11 @@ layout: default
       </div>
       {% endif %}
     </div>
-    <div class="gh-post-license">
+    <div class="post-license">
         本作品采用<a rel="license" href="/license">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
     </div>
     {% if site.comments %}
-    <div class="gh-post-comments">
+    <div class="post-comments">
       {% include comments.html %}
     </div>
     {% endif %}

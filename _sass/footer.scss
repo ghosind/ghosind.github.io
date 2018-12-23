@@ -4,19 +4,25 @@
  */
 
 @charset "utf-8";
- 
-.gh-footer {
+
+.container-footer {
   padding: 10px 0;
   border-top: solid 1px #aaa;
   overflow: hidden;
 }
 
-.gh-ft-copyright {
+.footer-copyright {
   overflow: hidden;
 }
 
-.gh-ft-copyright-text {
+.footer-copyright-text {
   display: block;
   position: relative;
   font-size: 14px;
+}
+
+.footer-license-image {
+  border-width: 0;
+  width: 80px;
+  height: 15px;
 }

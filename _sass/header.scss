@@ -5,34 +5,34 @@
 
 @charset "utf-8";
 
-.gh-header {
+.container-header {
   width: 100%;
   padding: 10px 0;
   border-bottom: solid 1px #aaa;
   overflow: hidden;
 }
 
-.gh-hd-site-info {
+.header-info {
   display: block;
   position: relative;
   margin: 10px;
 }
 
-.gh-hd-info-name {
+.header-info-name {
   font-size: 2em;
   font-weight: bold;
 }
 
-.gh-hd-info-desc {
+.header-info-desc {
   font-size: .9em;
 }
 
-.gh-hd-site-nav {
+.header-main-nav {
   list-style: none;
   margin: 0;
 }
 
-.gh-hd-site-nav-item {
+.header-main-nav-item {
   display: block;
   position: relative;
   float: left;

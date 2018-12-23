@@ -1,11 +1,11 @@
-<div class="gh-hd-site-info">
-  <span class="gh-hd-info-name">{{ site.title }}</span>
-  <span class="gh-hd-info-desc">{{ site.description }}</span>
+<div class="header-info">
+  <span class="header-info-name">{{ site.title }}</span>
+  <span class="header-info-desc">{{ site.description }}</span>
 </div>
-<nav class="gh-hd-nav">
-  <ul class="gh-hd-site-nav">
+<nav class="header-nav">
+  <ul class="header-main-nav">
   {% for item in site.data.menus %}
-    <li class="gh-hd-site-nav-item"><a href="{% if item.absoluteUrl != true %}{{ site.baseurl }}{% endif %}{{ item.url }}">{{ item.title }}</a></li>
+    <li class="header-main-nav-item"><a href="{% if item.absoluteUrl != true %}{{ site.baseurl }}{% endif %}{{ item.url }}">{{ item.title }}</a></li>
   {% endfor %}
   </ul>
 </nav>
