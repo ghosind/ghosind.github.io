@@ -19,7 +19,7 @@ email: i@ghosind.com
 description: Focus on Computer Science, Mathematics, and Electrics
 keywords: [computer science, programming, ghosind, blog]
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://www.ghosind.com" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://www.ghosind.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 facebook: chen.su.7796
 twitter: ghosind
