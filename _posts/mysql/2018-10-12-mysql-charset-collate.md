@@ -136,5 +136,5 @@ ALTER TABLE table-name MODIFY column-name column-type CHARACTER SET charset-name
 
 ## 参考资料
 
-1. [MySQL Reference Manual: Character Sets, Collations, Unicode](!https://dev.mysql.com/doc/refman/8.0/en/charset.html)
-2. [Stackoverflow](!https://stackoverflow.com/questions/1049728/how-do-i-see-what-character-set-a-mysql-database-table-column-is)
+1. [MySQL Reference Manual: Character Sets, Collations, Unicode](https://dev.mysql.com/doc/refman/8.0/en/charset.html)
+2. [Stackoverflow](https://stackoverflow.com/questions/1049728/how-do-i-see-what-character-set-a-mysql-database-table-column-is)
