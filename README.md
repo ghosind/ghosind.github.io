@@ -1,6 +1,6 @@
 # ghosind.github.io
 
-The source of my [blog](http://www.ghosind.com).
+The source of my [blog](https://www.ghosind.com).
 
 ## License
 
