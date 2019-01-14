@@ -20,7 +20,15 @@
   }
 
   /* Footer */
+  .container-footer {
+    padding: 10px 0 0 5px;
+  }
+
   .footer-copyright .float-left, .footer-copyright .float-right {
     float: none;
+  }
+
+  .footer-license-image {
+    margin: 5px;
   }
 }
