@@ -3,7 +3,7 @@ layout: post
 title: Shell Script函数
 date: 2016-5-28
 categories: ShellScript
-tags: [Linux, Bash, ShellScript, Function]
+tags: [Linux, Bash, ShellScript, Function, 函数]
 excerpt: Shell Script中函数的定义及使用。
 ---
 
@@ -47,7 +47,7 @@ script ended
 
 ### 函数参数与返回值
 
-在函数的使用中经常需要传递参数和返回值。在定义函数时，无需像其它语言一样预先定义函数的个数及名称，而是在函数中直接使用参数变量即可，参数变量参见[Shell Script介绍及变量使用](http://www.ghosind.com/2016/04/04/shell-script-variable)。在调用函数时，若需要传递参数，只需在函数名后加上参数，如`function_name arg1 arg2 ...`。函数的值返回方法与其它大部分语言类似，即`return return_value`。下面将使用一个小程序演示函数参数及返回值的使用。
+在函数的使用中经常需要传递参数和返回值。在定义函数时，无需像其它语言一样预先定义函数的个数及名称，而是在函数中直接使用参数变量即可，参数变量参见[Shell Script介绍及变量使用](https://www.ghosind.com/2016/04/04/bash-variable)。在调用函数时，若需要传递参数，只需在函数名后加上参数，如`function_name arg1 arg2 ...`。函数的值返回方法与其它大部分语言类似，即`return return_value`。下面将使用一个小程序演示函数参数及返回值的使用。
 
 ```sh
 #!/bin/sh

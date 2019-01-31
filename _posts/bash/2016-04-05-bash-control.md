@@ -3,7 +3,7 @@ layout: post
 title: Shell Script条件及控制语句
 date: 2016-4-5
 categories: ShellScript
-tags: [Linux, Bash, ShellScript, Control Flow]
+tags: [Linux, Bash, ShellScript, Control Flow, 控制流]
 excerpt: Shell Script中的条件及控制语句，控制语句包括if、for、while、until、case、break、continue。
 ---
 
@@ -46,7 +46,7 @@ excerpt: Shell Script中的条件及控制语句，控制语句包括if、for、
 
 #### AND
 
-在使用中可以需要满足多个条件，比如在if语句中如果需要同时满足三个条件就需要嵌套着写三个if，这样做会大大减低代码的美观性并增加嵌套的深度。所以在这样的条件下可以使用&&连接多个条件，如`statements1 && statements2 && statements3`。在程序运行的过程中，将会以从左往右的顺序执行，当其中某条语句为假时将不再判断后续的语句，整句的结果也为假。只有在所以语句都为真的情况下，整句的结果才为真。
+在使用中可以需要满足多个条件，比如在if语句中如果需要同时满足三个条件就需要嵌套着写三个if，这样做会大大减低代码的美观性并增加嵌套的深度。所以在这样的条件下可以使用`&&`连接多个条件，如`statements1 && statements2 && statements3`。在程序运行的过程中，将会以从左往右的顺序执行，当其中某条语句为假时将不再判断后续的语句，整句的结果也为假。只有在所以语句都为真的情况下，整句的结果才为真。
 
 #### OR
 
@@ -86,7 +86,7 @@ case variable in
 esac
 ```
 
-case语句将会进行模式匹配然后执行相关的语句。当variable的值为pattern1时，便会执行statements1语句块；当variable的值为pattern2时，便会执行statements2语句块。[]中的内容为可选条件，即可以多种情况执行同样的语句。在C语言的switch语句中有default，而case语句中没有default关键字。若要default功能可以使用通配符\*，即\*)，它的含义为任意字符窗。每个语句块都要以;;结尾。
+case语句将会进行模式匹配然后执行相关的语句。当variable的值为pattern1时，便会执行statements1语句块；当variable的值为pattern2时，便会执行statements2语句块。`[]`中的内容为可选条件，即可以多种情况执行同样的语句。在C语言的switch语句中有default，而case语句中没有default关键字。若要default功能可以使用通配符`*`，即`*)`，它的含义为任意字符窗。每个语句块都要以`;;`结尾。
 
 ### 循环语句
 
