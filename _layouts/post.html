@@ -11,6 +11,11 @@ layout: default
       <span>{{ site.author }}</span>
     </div>
   {% endif %}
+  {% if page.excerpt %}
+    <div class="post-excerpt">
+      摘要： {{ page.excerpt }}
+    </div>
+  {% endif %}
   <div class="post-content">
     {{ content }}
   </div>
