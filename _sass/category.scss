@@ -7,4 +7,23 @@
  
 .categories-list {
   line-height: 24px;
+  margin-left: 0;
+  list-style-type: none;
+}
+
+.category-name {
+  font-weight: bold;
+}
+
+.category-list-item {
+  display: block;
+  position: relative;
+  margin: 7px 0;
+  overflow: hidden;
+  line-height: 24px;
+}
+
+.category-list-item-name {
+  width: calc(100% - 100px);
+  font-weight: 300;
 }
