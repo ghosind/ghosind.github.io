@@ -24,3 +24,7 @@ permalink: /projects
 ## Games
 
 - [2048](/games/2048)
+
+## Tools
+
+- [JWT Decoder](/tools/jwt-decoder)
