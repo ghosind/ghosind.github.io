@@ -2,7 +2,7 @@
 layout: post
 title: Node.js中使用AWS SNS服务发送短信
 date: 2019-07-19
-update: 2019-07-22
+last_modified_at: 2019-07-22
 categories: AWS
 tags: [AWS, SNS, SMS, Node.js]
 excerpt: 在Node.js中实现通过AWS SDK使用AWS SNS服务发送短信至指定的手机号码，并通过Topic群发短信至多个手机号码。

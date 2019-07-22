@@ -21,7 +21,7 @@ layout: default
   </div>
   <div class="post-info">
     <div class="post-date">
-      Written on {{ page.date | date: "%B %e, %Y" }}{% if page.update %}, Updated on {{ page.update | date: "%B %e, %Y" }}{% endif %}.
+      Written on {{ page.date | date: "%B %e, %Y" }}{% if page.last_modified_at %}, Updated on {{ page.last_modified_at | date: "%B %e, %Y" }}{% endif %}.
     </div>
     {% if site.author %}
     <div class="post-author">

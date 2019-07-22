@@ -2,7 +2,7 @@
 layout: post
 title: Git初使用
 date: 2018-05-17
-update: 2018-10-07
+last_modified_at: 2018-10-07
 categories: [Git]
 tags: [git, Tutorial, Getting Start, Beginning]
 excerpt: 简单介绍Git及其基本使用方法。
