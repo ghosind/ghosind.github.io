@@ -16,11 +16,13 @@
 
 #decode {
   width: 100px;
-  height: 20px;
+  height: 22px;
+  border-radius: 5px;
 }
 
 #token-header, #token-payload {
-  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 #error-message {

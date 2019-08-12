@@ -27,4 +27,5 @@ permalink: /projects
 
 ## Tools
 
+- [JSON Formatter](/tools/json-formatter)
 - [JWT Decoder](/tools/jwt-decoder)

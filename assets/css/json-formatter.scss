@@ -1,0 +1,26 @@
+---
+---
+
+/*
+ * json-formatter.scss
+ * Author: Chen Su <i@ghosind.com>
+ */
+
+@charset "utf-8";
+
+#container {
+  text-align: center;
+}
+
+#content {
+  width: calc(100% - 2px);
+  height: 300px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+#format {
+  width: 100px;
+  height: 22px;
+  border-radius: 5px;
+}
