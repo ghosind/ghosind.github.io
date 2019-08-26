@@ -11,128 +11,172 @@
 .highlight {
   table {
     td {
-      padding: 5px; 
+      padding: 5px;
     }
 
-    pre { 
-      margin: 0; 
+    pre {
+      margin: 0;
     }
   }
 
   .gl {
     color: #5f6a6d;
   }
-  
+
   .gp {
     font-weight: bold;
     color: #2279a5;
   }
-  
-  .c, .cd, .cm, .c1, .cs {
+
+  .c,
+  .cd,
+  .cm,
+  .c1,
+  .cs {
     font-style: italic;
     color: #228b22;
   }
-  
+
   .cp {
     font-style: italic;
     font-weight: bold;
     color: #a52a2a;
   }
-  
+
   .err {
     color: #fefeec;
     background-color: #c00;
   }
-  
+
   .gr {
     font-style: italic;
     font-weight: bold;
     color: #c00;
   }
-  
-  .k, .kd, .kv {
+
+  .k,
+  .kd,
+  .kv {
     font-weight: bold;
     color: #c71585;
   }
-  
-  .o, .ow {
+
+  .o,
+  .ow {
     font-weight: bold;
     color: #157c83;
   }
-  
-  .p, .pi {
+
+  .p,
+  .pi {
     color: #0f6f75;
   }
-  
+
   .gd {
     color: #c00;
   }
-  
+
   .gi {
     color: #78be36;
   }
-  
+
   .ge {
     font-style: italic;
   }
-  
+
   .gs {
     font-weight: bold;
   }
-  
+
   .gt {
     color: #dee5e7;
     background-color: #4e5d62;
   }
-  
+
   .kc {
     font-weight: bold;
     color: #c71585;
   }
-  
-  .kt, .no, .nc, .nd, .nn, .bp, .ne {
+
+  .kt,
+  .no,
+  .nc,
+  .nd,
+  .nn,
+  .bp,
+  .ne {
     font-weight: bold;
     color: #808;
   }
-  
-  .kn, .kp, .kr, .gh, .gu, .nl, .nt {
+
+  .kn,
+  .kp,
+  .kr,
+  .gh,
+  .gu,
+  .nl,
+  .nt {
     font-weight: bold;
     color: #ffb000;
   }
-  
-  .m, .mf, .mh, .mi, .il, .mo, .mb, .mx, .ld, .ss {
+
+  .m,
+  .mf,
+  .mh,
+  .mi,
+  .il,
+  .mo,
+  .mb,
+  .mx,
+  .ld,
+  .ss {
     font-weight: bold;
     color: #f696db;
   }
-  
-  .s, .sb, .sd, .s2, .sh, .sx, .sr, .s1, .se, .sc, .si {
+
+  .s,
+  .sb,
+  .sd,
+  .s2,
+  .sh,
+  .sx,
+  .sr,
+  .s1,
+  .se,
+  .sc,
+  .si {
     font-weight: bold;
     color: #800;
   }
-  
+
   .nb {
     font-weight: bold;
   }
-  
+
   .ni {
     font-weight: bold;
     color: #555;
   }
-  
+
   .w {
     color: #777;
   }
-  
+
   .go {
     color: #444;
   }
-  
-  .nf, .py, .na {
+
+  .nf,
+  .py,
+  .na {
     color: #008;
   }
-  
-  .nv, .vc, .vg, .vi {
+
+  .nv,
+  .vc,
+  .vg,
+  .vi {
     font-weight: bold;
     color: #008;
-  }  
+  }
 }

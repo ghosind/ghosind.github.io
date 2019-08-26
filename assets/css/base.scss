@@ -8,21 +8,6 @@
 
 @charset "utf-8";
 
-@import 
-  "reset",
-  "wrapper",
-  "function",
-  "header",
-  "main",
-  "footer",
-  "page",
-  "post-list",
-  "post",
-  "category",
-  "404",
-  "highlighter",
-  "mobile",
-  "printer",
-  "task-list",
-  "mermaid"
-;
+@import 'reset', 'wrapper', 'function', 'header', 'main', 'footer', 'page',
+  'post-list', 'post', 'category', '404', 'highlighter', 'mobile', 'printer',
+  'task-list', 'mermaid';
