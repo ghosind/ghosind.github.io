@@ -7,21 +7,20 @@ layout: default
     <h1>{{ page.title }}</h1>
   </div>
   {% if site.author %}
-    <div class="post-author print-post-author">
-      <span>{{ site.author }}</span>
-    </div>
+  <div class="post-author print-post-author">
+    <span>{{ site.author }}</span>
+  </div>
   {% endif %}
   {% if page.excerpt %}
-    <div class="post-excerpt">
-      摘要： {{ page.excerpt }}
-    </div>
+  <div class="post-excerpt">摘要： {{ page.excerpt }}</div>
   {% endif %}
   <div class="post-content">
     {{ content }}
   </div>
   <div class="post-info">
     <div class="post-date">
-      Written on {{ page.date | date: "%B %e, %Y" }}{% if page.last_modified_at %}, Updated on {{ page.last_modified_at | date: "%B %e, %Y" }}{% endif %}.
+      Written on {{ page.date | date: '%B %e, %Y' }}{% if page.last_modified_at %}, 
+      Updated on {{ page.last_modified_at | date: '%B %e, %Y' }}{% endif %}.
     </div>
     {% if site.author %}
     <div class="post-author">
@@ -31,7 +30,11 @@ layout: default
     <div class="post-categories">
       <span>Categories:</span>
       {% for category in page.categories %}
-      <a href="{{ site.baseurl }}/categories#{{ category }}" class="post-category">{{ category }}</a>
+      <a
+        href="{{ site.baseurl }}/categories#{{ category }}"
+        class="post-category">
+        {{ category }}
+      </a>
       {% endfor %}
     </div>
     <div class="post-tags">
@@ -43,17 +46,19 @@ layout: default
     <div class="post-tools">
       {% if page.next %}
       <div>
-        <span>Next: </span><a href="{{ page.next.url }}">{{ page.next.title }}</a>
+        <span>Next: </span>
+        <a href="{{ page.next.url }}">{{ page.next.title }}</a>
       </div>
       {% endif %}
       {% if page.previous %}
       <div>
-        <span>Previous: </span><a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
+        <span>Previous: </span>
+        <a href="{{ page.previous.url }}">{{ page.previous.title }}</a>
       </div>
       {% endif %}
     </div>
     <div class="post-license">
-        本作品采用<a rel="license" href="/license">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+      本作品采用<a rel="license" href="/license">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
     </div>
     {% if site.comments %}
     <div class="post-comments">
