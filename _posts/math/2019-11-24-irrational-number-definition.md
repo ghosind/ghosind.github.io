@@ -3,7 +3,7 @@ layout: post
 title: 无理数的定义
 date: 2019-11-24
 categories: [Math]
-tags: [数学, 数论, 无理数]
+tags: [数学, 无理数]
 excerpt: 通过戴德金定理叙述无理数的理论。
 ---
 
