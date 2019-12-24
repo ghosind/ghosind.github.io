@@ -2,6 +2,7 @@
 layout: post
 title: 解决安装Electron缓慢问题
 date: 2019-02-28
+last_modified_at: 2019-12-24
 categories: [Electron]
 tags: [Node.js, Electron, npm]
 excerpt: 安装Electron过程中下载安装包速度慢的解决方法。
@@ -40,6 +41,11 @@ Electron官方提供了一个该情况的解决方法，可以选择手动下载
 
 另外，也可以通过设置`ELECTRON_CACHE`环境变量指定一个新的缓存文件夹位置。在完成上述操作后，重新运行npm即可完成Electron的安装。
 
+## 2019/12/24更新
+
+由于`@electron/get`包的修改，使上文中方法无效。解决方式为使用`ELECTRON_MIRROR="https://cdn.npm.taobao.org/dist/electron/" npm install electron`命令安装。
+
 ## 参考链接
 
 - [安装 - Electron](https://electronjs.org/docs/tutorial/installation)
+- [electron/get 修改了镜像的读取地址路径...](https://github.com/cnpm/cnpmjs.org/issues/1530)
