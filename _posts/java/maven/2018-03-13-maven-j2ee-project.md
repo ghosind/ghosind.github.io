@@ -23,11 +23,11 @@ IntelliJ IDEA是常用的Java IDE之一，也受到很多人的喜爱。但是�
 
 首先，打开IDEA创建一个新Maven项目，勾选`Create from archetype`，并在列表中选中`org.apache.maven.archetypes:maven-archetype-webapp`。
 
-![创建Maven项目](/assets/images/java/maven/2018-03-13-build-j2ee-with-maven/create-project.png)
+![创建Maven项目](/assets/images/java/maven/eb46945a/create-project.png)
 
 点击Next，填写项目信息，并完成项目的创建。项目创建完成后将会根据选择的archetype创建相应的文件和目录，这个过程可能需要较长的时间。完成后的文件及目录如下图所示。
 
-![项目结构](/assets/images/java/maven/2018-03-13-build-j2ee-with-maven/project-structure.png)
+![项目结构](/assets/images/java/maven/eb46945a/project-structure.png)
 
 ## 配置Maven
 
@@ -50,7 +50,7 @@ IntelliJ IDEA是常用的Java IDE之一，也受到很多人的喜爱。但是�
 
 成功添加tomcat7-maven-plugin插件后，IDEA的Maven Projects视图下将出现tomcat7。
 
-![添加插件](/assets/images/java/maven/2018-03-13-build-j2ee-with-maven/maven-projects.png)
+![添加插件](/assets/images/java/maven/eb46945a/maven-projects.png)
 
 ## 部署
 
@@ -63,7 +63,7 @@ IntelliJ IDEA是常用的Java IDE之一，也受到很多人的喜爱。但是�
 
 编辑完成后，通过`service tomcat8 restart`重启Tomcat8，再通过IDEA中的Maven Projects视图运行`tomcat7:deploy`部署后即可。部署完成后可以通过`http://localhost:8080/project-name`访问创建的J2EE站点，实际URL按项目和Tomcat的设置决定。
 
-![插件命令](/assets/images/java/maven/2018-03-13-build-j2ee-with-maven/tomcat-plugin.png)
+![插件命令](/assets/images/java/maven/eb46945a/tomcat-plugin.png)
 
 ### 热部署
 

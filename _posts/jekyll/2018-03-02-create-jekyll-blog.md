@@ -29,7 +29,7 @@ blog $ bundle exec jekyll serve
 
 这样就完成了Jekyll的安装，并使用最后一行的命令启动了服务器，默认情况下可以通过`http://localhost:4000`进行访问。后续要再运行服务只需要进入博客的目录使用最后一行的命令启动即可，不需要再次进行安装。
 
-![博客页面](/assets/images/jekyll/2018-03-02-create-blog-with-github-and-jekyll/blog.png)
+![博客页面](/assets/images/jekyll/0917bff3/blog.png)
 
 ## 目录结构
 

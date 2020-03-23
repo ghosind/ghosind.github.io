@@ -56,7 +56,7 @@ $ aws s3 cp dump.rdb s3://redis-dump/dump.rdb
 - AWS GovCloud (US)区域：`40fa568277ad703bd160f66ae4f83fc9dfdfd06c2f1b5060ca22442ac3ef8be6`
 - 所有其他区域：`540804c33a284a299d2547575ce1010f2312ef3da9b3a053c8bc45bf233e4353`
 
-![dump.rdb权限](/assets/images/aws/elasticache/2018-10-03-redis-to-elasticache/permission.png)
+![dump.rdb权限](/assets/images/aws/elasticache/942f88f7/permission.png)
 
 ## 创建ElastiCache Redis实例
 
