@@ -2,6 +2,7 @@
 layout: post
 title: 通过N-API使用C/C++开发Node.js Native模块
 date: 2020-02-17
+last_modified_at: 2020-03-25
 categories: [Node.js]
 tags: [Node.js, Native, N-API]
 excerpt: 本文主要简单介绍Node.js中的N-API模块，并以一个简单的例子展示如何通过N-API使用C/C++开发Node.js Native模块。
@@ -9,11 +10,11 @@ excerpt: 本文主要简单介绍Node.js中的N-API模块，并以一个简单�
 
 ## 什么是N-API
 
-> N-API is an API for building native Addons. It is independent from the underlying JavaScript runtime (ex V8) and is maintained as part of Node.js itself. This API will be Application Binary Interface (ABI) stable across versions of Node.js. It is intended to insulate Addons from changes in the underlying JavaScript engine and allow modules compiled for one major version to run on later major versions of Node.js without recompilation. The ABI Stability guide provides a more in-depth explanation. <sup>[1]</sup>
+N-API为开发者提供了一套C/C++ API用于开发Node.js的Native扩展模块。从Node.js 8.0.0开始，N-API以实验性特性作为Node.js本身的一部分被引入，并且从Node.js 10.0.0开始正式全面支持N-API。
 
 ## Hello N-API
 
-下面，我们将使用N-API编写一个`hello`模块，其中包括一个`greeting`方法，其功能为返回一个`Hello N-API!`字符串。它实现的功能相当于下列Javascript代码。
+本文将使用一个简单的模块作为示例介绍N-API。我们将编写一个`hello`模块，其中包括一个返回`Hello N-API!`字符串的方法`greeting`。其实现的功能相当于下列Javascript代码：
 
 ```js
 const greeting = () => {
@@ -25,38 +26,67 @@ module.exports = {
 };
 ```
 
-### C/C++代码
+### greeting方法定义
 
-首先，我们需要创建一个C/C++源文件，其内容如下：
+首先，我们需要定义`greeting`方法，并返回值为`Hello N-API!`的字符串。为了使用N-API提供的接口及类型定义，我们需要引入`node_api.h`头文件。使用N-API定义的方法需要满足`napi_callback`类型，其定义为：
 
 ```c
-#include <node_api.h>
+typedef napi_value (*napi_callback)(napi_env env, napi_callback_info info);
+```
 
-#include <assert.h>
-#include <string.h>
+`napi_callback`是使用N-API开发的Native函数的函数指针类型，其接受类型分别为`napi_env`以及`napi_callback_info`的两个参数，并返回类型为`napi_value`的值。`greeting`方法中涉及到的几个类型定义及其用途如下：
 
-/**
- * 定义greeting方法
- */
+- `napi_value`类型是一个用于表示Javascript值的指针
+- `napi_env`类型用于存储Javascript虚拟机的上下文
+- `napi_callback_info`类型用于调用回调函数时，传递调用时的上下文信息
+
+我们定义的`greeting`方法如下：
+
+```c
 napi_value greeting(napi_env env, napi_callback_info info) {
   napi_status status;
   napi_value word;
   char *str = "Hello N-API!";
 
-  // 创建"Hello N-API!"字符串
   status = napi_create_string_utf8(env, str, strlen(str), &word);
 
   assert(status == napi_ok);
 
   return word;
 }
+```
 
-/**
- * 模块初始化方法
- */
+在`greeting`方法中，我们通过`napi_create_string_utf8`函数创建了值为`"Hello N-API!"`的Javascript字符串对象，并将其作为该方法的返回值返回。`napi_create_string_utf8`用于创建一个UTF-8类型的字符串对象，其值来自于参数传递的UTF-8编码字符串，函数原型如下：
+
+```c
+napi_status napi_create_string_utf8(napi_env env,
+    const char *str,
+    size_t length,
+    napi_value* result);
+```
+
+- `env`：传递当前VM的上下文信息
+- `str`：UTF-8编码的字符序列
+- `length`：字符序列`str`的长度
+- `result`：用于表示创建的Javascript字符串对象的指针
+
+`napi_create_string_utf8`返回一个`napi_status`类型的值，当其值为`napi_ok`时代表完成字符串对象的创建。如示例中代码所示，我们在调用`napi_create_string_utf8`后，便使用`assert`判断其返回值是否为`napi_ok`。
+
+`napi_status`是一个用于指示N-API中状态的枚举类型，其值可参考[napi_status](#https://nodejs.org/dist/latest-v12.x/docs/api/n-api.html#n_api_napi_status)。
+
+### 模块注册
+
+在完成了`greeting`方法后，我们还需要注册我们的`hello`模块。N-API通过`NAPI_MODULE(modname, regfunc)`宏进行模块的注册。其接受两个参数，分别为模块名及模块初始化函数。模块初始化函数需要满足下列函数签名：
+
+```c
+napi_value (*)(napi_env env, napi_value exports);
+```
+
+在模块的初始化中，我们可以定义模块需要暴露的方法及属性。我们的模块初始化函数如下所示：
+
+```c
 napi_value init(napi_env env, napi_value exports) {
   napi_status status;
-  // 创建greeting方法描述符
   napi_property_descriptor descriptor = {
     "greeting",
     0,
@@ -68,33 +98,45 @@ napi_value init(napi_env env, napi_value exports) {
     0,
   };
 
-  // 定义模块exports中的属性
   status = napi_define_properties(env, exports, 1, &descriptor);
   assert(status == napi_ok);
 
   return exports;
 }
 
-// 定义NAPI模块
 NAPI_MODULE(hello, init);
 ```
 
-代码的第9-20行，定义了一个名为`greeting`的函数，它是一个将可以在Node.js使用的方法。使用NAPI定义Node.js调用的方法需要满足`napi_value (*)(napi_env, napi_callback_info)`的参数及返回值要求。该方法接收两个参数，分别为`napi_env`类型的参数`env`，及`napi_callback_info`类型的参数`info`，并返回`napi_value`类型的值。例子中主要使用了`env`参数，其用于存储虚拟机上下文。
-
-`greeting`方法主要创建了一个JS字符串变量并将其返回。该方法通过`napi_create_string_utf8`函数创建了Javascript字符串对象，其值源自第二个参数传递的UTF-8编码的字符串。该方法的定义为：
+在我们的的初始化函数中，需要在模块的`exports`对象中定义`greeting`属性。在定义属性之前，我们需要创建一个`napi_property_descriptor`类型的属性描述符，该类型的定义如下：
 
 ```c
-napi_status napi_create_string_utf8(napi_env env,
-    const char *str,
-    size_t length,
-    napi_value* result);
+typedef struct {
+  const char* utf8name;
+  napi_value name;
+
+  napi_callback method;
+  napi_callback getter;
+  napi_callback setter;
+  napi_value value;
+
+  napi_property_attributes attributes;
+  void* data;
+} napi_property_descriptor;
 ```
 
-`napi_create_string_utf8`的第一个参数为`greeting`函数的`env`函数，即当前虚拟机的上下文。`str`参数为将保存的对应值，并使用`length`参数告知`str`参数的长度，创建的字符串对象将使用`napi_value`类型`result`指针返回（`napi_value`类型用于指向Javascript值）。`napi_create_string_utf8`的返回值将返回字符串是否创建成功，若其值为`napi_ok`时即表示创建成功。
+对于本文示例中需要使用的属性值描述如下所示，关于`napi_property_descriptor`的更多描述可参考[napi_property_descriptor](#https://nodejs.org/dist/latest-v12.x/docs/api/n-api.html#n_api_napi_property_descriptor)。
 
-代码的25-44行定义了`init`函数，其为该模块的初始化方法。模块初始化方法需要满足`napi_value (*)(napi_env env, napi_value exports)`的格式要求，其返回值即模块的`exports`。
+- `utf8name`：UTF-8编码的字符序列
+- `name`：由Javascript对象表示的字符串或者Symbol
 
-代码的28行定义了`greeting`方法的描述符，并在36行中通过`napi_define_properties`方法在`exports`中定义该对象属性。`napi_define_properties`函数的定义为：
+`utf8name`以及`name`二者中必须且只能有一个被提供，其代表属性的名称。
+
+- `method`：将该属性设置为表示一个Javascript方法（function）
+- `attributes`：属性的行为控制标志，示例中使用了默认的`napi_default`值，更多描述可参考[napi_property_attributes](#https://nodejs.org/dist/latest-v12.x/docs/api/n-api.html#n_api_napi_property_attributes)
+
+我们需要定义的`greeting`属性是一个方法，所以我们所创建的属性描述符主要传递了`utf8name`以及`method`属性。
+
+在创建属性描述符后，便需要将其在模块的`exports`对象中定义，使Javascript代码能够访问。对象属性的定义使用了`napi_define_properties`函数，它可以快速的为一个对象定义指定数量的属性。该函数定义为：
 
 ```c
 napi_status napi_define_properties(napi_env env,
@@ -103,11 +145,19 @@ napi_status napi_define_properties(napi_env env,
     const napi_property_descriptor *properties);
 ```
 
-该方法用于定义JS对象中的属性，它将为`object`参数指向的JS对象增加`properties`参数指向的描述符数组所定义的属性，其新增属性的数量由`count`参数所表示。
+- `object`：需要定义属性的Javascript对象
+- `property_count`：属性数量
+- `properties`：属性描述符数组
 
-最后，通过`NAPI_MODULE`宏注册模块，其第一个参数为该模块的名称，第二个参数为模块初始化方法。如例子中模块明为hello，初始化方法为定义的`init`函数。
+同样，`napi_define_properties`也返回了一个`napi_status`类型的值表示函数调用是否成功。
 
-接下来，需要定义`binging,gyp`文件，其内容如下所示：
+最后，我们只需要在模块初始化函数中返回`exports`对象，并通过`NAPI_MODULE(hello, init)`注册`hello`模块。到此为止，我们的`hello`模块便编写完成了。
+
+## 模块编译
+
+Native模块的构建可选择`node-gyp`或者`cmake.js`，二者的使用需要安装C/C++工具链，本文选择了`node-gyp`作为示例的构建工具。`node-gyp`是基于Google的`gyp`工具开发，它除了必要的C/C++编译器以外，还需要安装Python以及make工具。对于Windows用户，使用`node-gyp`需要安装Python并通过npm安装`windows-build-tools`（`npm install --global --production windows-build-tools`）。
+
+接下来，需要定义`binding,gyp`文件。`binding,gyp`是node-gyp的JSON类型配置文件，文中示例程序使用的`binding.gyp`内容如下所示：
 
 ```json
 {
@@ -122,15 +172,21 @@ napi_status napi_define_properties(napi_env env,
 }
 ```
 
-`binging,gyp`是node-gyp的配置文件，如示例中所示，其中包括了`target_name`和`sources`。`target_name`定义了该Native包的名称，而`sources`定义了需要编译的文件。
+如示例所示，`binding,gyp`文件中定义了`targets`，它定义了一组gyp能生成的目标。`targets`中定义了一个对象，其包括了`target_name`和`sources`两个属性。`target_name`定义了该Native包的名称，`sources`定义了需要编译的文件。
 
-接下来便可以使用`node-gyp`编译我们创建的Native模块。
+对于gyp文件的更多配置，可参考[nodejs/node-gyp](#https://github.com/nodejs/node-gyp)、[GYP User Documentation](#https://gyp.gsrc.io/docs/UserDocumentation.md)以及[GYP Input Format Reference](#https://gyp.gsrc.io/docs/InputFormatReference.md)。
+
+接下来便可以使用`node-gyp`构建示例中编写的Native模块。
 
 ```bash
 $ node-gyp configure build
 ```
 
-编译完后，将会在当前目录下产生一个`build`文件，其中包括了编译中生成的各个中间文件以及最后生成的`.node`文件，而`.node`文件本质上即一个动态的链接库（Node.js会调用`dlopen`函数用于加载`.node`文件）。我们接下来就将在js代码中引入生成的`.node`文件来调用`greeting`方法。
+在完成构建后，将会在当前目录下产生一个`build`文件，其中包括了生成的各个中间文件以及`.node`文件。`.node`文件本质上即一个动态的链接库，Node.js会调用`dlopen`函数用于加载`.node`文件。
+
+## 测试
+
+在构建Native模块后，就将在js代码中引入生成的`.node`文件，并调用上文模块中定义`greeting`方法。
 
 ```js
 const hello = require('./build/Release/hello.node');
@@ -138,15 +194,28 @@ const hello = require('./build/Release/hello.node');
 console.log(hello.greeting());
 ```
 
-在安装了`bindings`依赖以后，`const hello = require('./build/Release/hello.node');`可修改为`const hello = require('bindings')('hello');`。
-
-最后，运行上面编写的index.js文件，即可输出在native扩展中定义的Hello N-API字符串。
+运行该程序，将得到下面的输出结果：
 
 ```bash
 $ node index.js
 Hello N-API!
 ```
 
+若安装了`bindings`依赖，便可将`const hello = require('./build/Release/hello.node');`修改为`const hello = require('bindings')('hello');`。
+
+```js
+const hello = require('bindings')('hello');
+
+console.log(hello.greeting());
+```
+
+## 结束语
+
+对于Node.js Native扩展模块的开发，除了使用N-API提供的API以外，还可选择[nodejs/nan](#https://github.com/nodejs/nan)或者[nodejs/node-addon-api](#https://github.com/nodejs/node-addon-api)。
+
+N-API提供的接口为纯C的风格，对于C++开发者可选用[node-addon-api](#https://github.com/nodejs/node-addon-api)，其在N-API的基础上提供了C++对象模型以及异常处理。
+
 ## 参考资料
 
-1. [N-API | Node.js v12 Documentation](https://nodejs.org/dist/latest-v12.x/docs/api/n-api.html)
+1. [N-API - Node.js v12 Documentation](https://nodejs.org/dist/latest-v12.x/docs/api/n-api.html)
+2. [node-addon-examples - GitHub](https://github.com/nodejs/node-addon-examples/tree/master/1_hello_world/napi)
