@@ -101,6 +101,8 @@ http {
 
 `server`块用于定义一个虚拟服务及其配置（即一个站点），它需要位于`http`上下文中。Nginx的http服务支持创建多个虚拟服务，每个虚拟服务对应于一个`http`块中的`server`配置块。对于一个虚拟服务，它默认会监听80端口的所有请求，并根据请求及配置寻找对应的资源。在`server`块中，可使用`root`命令设定资源的目录，即上例中所有的请求将获取`/data/www`目录下定义的资源。
 
+在修改配置文件后，使用`nginx -s reload`重新加载配置文件，即可通过`http://{ip}`（将`{ip}`替换为服务器ip地址）或在本地通过`http://localhost`访问搭建的网站。
+
 随着网站的发展，图片资源文件也越来越多。为了方便对代码的管理，张三决定将图片资源转移到`/data/images`目录下。由于图片目录不再位于站点目录下，所以需要修改nginx配置使当url包含`/images/`是前往`/data/images`目录寻找对应资源。
 
 ```conf
@@ -173,7 +175,7 @@ listen 443 ssl;
 - `default_server`：无其它匹配服务的情况下的默认服务，在未指定的情况下第一个server会被隐式设为`default_server`。
 - `ssl`：必须使用SSL，即通过HTTPS访问。
 
-但是一直通过ip及端口访问体验非常糟糕，于是张三便购买了自己的域名`zhangsan.com`。通过`www.zhangsan.com`可以访问门户网站，通过`blog.zhangsan.com`访问博客，无需使用非80端口。于是，就可以使用Nginx的`server_name`命令指定虚拟服务的识别路径。
+但是一直通过ip及端口访问体验非常糟糕，于是张三便购买了自己的域名`zhangsan.com`。通过`zhangsan.com`或`www.zhangsan.com`可以访问门户网站，通过`blog.zhangsan.com`访问博客，无需使用非80端口。于是，就可以使用Nginx的`server_name`命令指定虚拟服务的识别路径。
 
 ```conf
 http {
@@ -184,7 +186,7 @@ http {
   }
 
   server {
-    server_name www.zhangsan.com;
+    server_name zhangsan.com www.zhangsan.com;
 
     # ...
   }
@@ -204,9 +206,11 @@ server_name _;
 server_name "";
 ```
 
-对于使用通配符的名称，`*`只能在最前端或最后端，例如`w*.zhangsan.com`是不合法的。
+对于使用通配符的名称，`*`只能在最前端或最后端，例如`w*.zhangsan.com`或`www.zhangsan.*m`是不合法的。
 
 当使用`server_name _`时，该服务将匹配任意路径。当没有使用`server_name`时，会隐式设置为`server_name ""`，该服务为无匹配服务情况下的默认服务。
+
+运行`nginx -s reload`重新加载配置文件后，即可通过`http://zhangsan.com`或`http://www.zhangsan.com`访问门户网站，通过`http://blog.zhangsan.com`访问博客。
 
 ## 结束语
 
@@ -214,6 +218,6 @@ server_name "";
 
 ## 参考资料
 
-- [nginx documentation](#http://nginx.org/en/docs/)
+- [Nginx documentation](#http://nginx.org/en/docs/).
 - Dimitri Aivaliotis. *Mastering Nginx*.
 - Martin Fjordvald, Clement Nedulcu. *Nginx HTTP Server, Fourth Edition*.
