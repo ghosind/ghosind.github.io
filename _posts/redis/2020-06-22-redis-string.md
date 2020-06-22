@@ -73,7 +73,7 @@ redis> SET greeting "hello redis" NX
 OK
 ```
 
-使用`KEEPTTL`参数将会保留原键的生存时间：
+使用`KEEPTTL`参数将会保留原键值对的生存时间：
 
 ```sh
 redis> SET greeting "hello world" EX 100
@@ -182,7 +182,7 @@ redis> EXPIRE none 10
 
 ## TTL / PTTL
 
-`TTL`命令用于获取指定键的剩余生存时间（time to live, TTL），其值已秒作为生存时间的单位。`TTL`命令可被用于所有数据类型，不仅限于字符串。
+`TTL`命令用于获取指定键的剩余生存时间（time to live, TTL），其值以秒作为生存时间的单位。`TTL`命令可被用于所有数据类型，不仅限于字符串。
 
 ```
 TTL key
