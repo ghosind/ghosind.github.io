@@ -121,6 +121,25 @@ redis> GET students
 (error) WRONGTYPE Operation against a key holding the wrong kind of value
 ```
 
+## GETSET
+
+`GETSET`命令用于设置键值对的值并返回旧值，若键值对不存在则返回`nil`。若键存在但不为字符串类型，则返回错误。
+
+```
+GETSET key value
+```
+
+### 示例
+
+```sh
+redis> SET greeting "hello world"
+OK
+redis> GETSET greeting "hello redis"
+"hello world"
+redis> GET greeting
+"hello redis"
+```
+
 ## DEL
 
 `DEL`命令被用于删除指定的一个或多个键值对，当其中某个键值对不存在时将被忽略。`DEL`命令可被用于所有数据类型，不仅限于字符串。
