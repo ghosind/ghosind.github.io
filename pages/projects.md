@@ -8,8 +8,8 @@ permalink: /projects
 
 - [Timepop](https://timepop.app): Timepop is a free app that takes a refreshing approach to inspire you to focus on what’s coming up, rather than looking at the past. Literally, you scroll up to see the future!
 - [Vibe](http://vibeapp.in): Share daily moments with your friends and campus.
-- [FoodiEats](https://foodieats.io)
-- [FatCoupon](https://fatcoupon.com)
+- [FoodiEats](https://foodieats.io): Save time, satisfy your cravings & earn rewards with your favorite restaurants at your fingertips.
+- [FatCoupon](https://fatcoupon.com): FatCoupon Extension: More Coupons, Better Savings.
 - [Upterm](https://github.com/railsware/upterm): A terminal emulator for the 21st century.
 - [kue-scheduler](https://github.com/lykmapipo/kue-scheduler): A job scheduler utility for kue, backed by redis and built for node.js.
 

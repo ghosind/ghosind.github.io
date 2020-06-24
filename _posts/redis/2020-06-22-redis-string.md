@@ -61,13 +61,13 @@ redis> SET greeting "hello world" EX 10
 OK
 # 获取剩余生存时间
 redis> TTL greeting
-9
+(integer) 9
 # 键不存在时设置
 redis> SET greeting "hello redis" NX
 (nil)
 # 等待greeting过期后，使用TTL命令获取到的生存时间为-2
 redis> TTL greeting
--2
+(integer) -2
 # 使用NX参数设置成功
 redis> SET greeting "hello redis" NX
 OK
