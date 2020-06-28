@@ -233,7 +233,7 @@ redis> GET result
 
 ## BITFIELD
 
-使用`BITFIELD`将字符串看成二进制位数组，并对其中存储不同长度的整数进行操作。例如设置偏移量为1234的5位有符号整数的值，或是获取偏移量位4567的31位无符号整数的值。同时，`BITFIELD`命令也提供了`INCRBY`子命令对只进行加/减操作，并提供了设置以处理溢出的情况。
+使用`BITFIELD`将字符串看成二进制位数组，并对其中存储不同长度的整数进行操作。例如设置偏移量为1234的5位有符号整数的值，或是获取偏移量为4567的31位无符号整数的值。同时，`BITFIELD`命令也提供了`INCRBY`子命令对值进行加/减操作，并提供了设置以处理溢出的情况。
 
 ```
 BITFIELD key [GET type offset] [SET type offset value] [INCRBY type offset increment] [OVERFLOW WRAP|SAT|FAIL]
