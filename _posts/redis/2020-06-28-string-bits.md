@@ -150,11 +150,11 @@ redis> BITPOS mykey 0 0 0
 BITOP operation destkey key [key ...]
 ```
 
-`BITOP`命令支持与（`AND`)、或（`OR`）、亦或（`XOR`）以及非（`NOT`）四个位运算操作，其使用方式为：
+`BITOP`命令支持与（`AND`)、或（`OR`）、异或（`XOR`）以及非（`NOT`）四个位运算操作，其使用方式为：
 
 - `AND` 与操作，使用方式为`BITOP AND destkey srckey1 srckey2 ...`
 - `OR` 或操作，使用方式为`BITOP OR destkey srckey1 srckey2 ...`
-- `XOR` 亦或操作，使用方式为`BITOP XOR destkey srckey1 srckey2 ...`
+- `XOR` 异或操作，使用方式为`BITOP XOR destkey srckey1 srckey2 ...`
 - `NOT` 非操作，使用方式为`BITOP NOT destkey srckey`
 
 当输入的字符串长度不同时，将使用`0`填充至与最长长度相同。若输入的键不存在则认定为一个空白字符串，并以0填充至与最长长度相同。
@@ -198,7 +198,7 @@ redis> GET result
 "\xff"
 ```
 
-亦或（XOR）操作：
+异或（XOR）操作：
 
 ```sh
 # 10101010 ^ 11110000 = 01011010
