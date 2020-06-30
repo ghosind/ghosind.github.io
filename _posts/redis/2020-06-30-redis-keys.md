@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Redis命令之键值对操作
+title: Redis命令介绍之键值对操作
 date: 2020-06-30
 categories: [Redis]
 tags: [Redis, keys]
@@ -69,7 +69,7 @@ redis> RENAME greeting new-greeting
 (error) ERR no such key
 ```
 
-当键名`key1`和`key2`都且类型不同时，使用`RENAME`也将覆盖`key2`的值：
+当键名`key1`和`key2`都存在且类型不同时，使用`RENAME`也将覆盖`key2`的值：
 
 ```sh
 redis> SET key1 "value1"
