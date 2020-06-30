@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Redis基本类型之字符串的基本操作
+title: Redis命令介绍之字符串键的基本操作
 date: 2020-06-22
 categories: [Redis]
 tags: [Redis, string]

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Redis基本类型之字符串的位操作以及STRALGO命令
+title: Redis命令介绍之位操作以及STRALGO命令
 date: 2020-06-28
 categories: [Redis]
 tags: [Redis, string]
