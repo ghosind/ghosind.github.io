@@ -175,6 +175,8 @@ EXPIRE key seconds
 PEXPIRE key milliseconds
 ```
 
+使用`EXPIRE`或`PEXPIRE`命令时，若传入的过期时间为一个非正整数，该键值对将被删除（触发的事件为`del`而非`expire`，即该键为被删除而不是过期）。
+
 ### 返回值
 
 - 当过期时间被设置，则返回`1`
