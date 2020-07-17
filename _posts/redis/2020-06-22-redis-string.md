@@ -249,12 +249,14 @@ SETEX key seconds value
 `SETEX`命令效果等同于使用`SET key value`及`EXPIRE key seconds`命令，以及`SET key value EX seconds`命令。`SETEX`命令具备原子性，它等同于在`MULTI`/`EXEC`块中使用`SET`以及`EXPIRE`命令。
 
 ```sh
-redis> SET mykey 10 "test"
-# 等同于
-redis> SET mykey "test"
-redis> EXPIRE mykey 10
+redis> SETEX mykey 10 "test"
 # 等同于
 redis> SET mykey "test" EX 10
+# 等同于
+redis> MULTI
+redis> SET mykey "test"
+redis> EXPIRE mykey 10
+redis> EXEC
 ```
 
 `PSETEX`命令与`SETEX`命令相似，二者区别为`PSETEX`设置的生存时间以毫秒作为单位。
