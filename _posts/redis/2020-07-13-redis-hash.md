@@ -246,7 +246,7 @@ redis> HVALS cards
 
 ## HSCAN
 
-`HSCAN`命令于前文中介绍过的[`SCAN`](https://www.ghosind.com/2020/06/30/redis-keys#scan)命令类似，它用于增量式的迭代哈希表中的所有域，并返回其域名称及其值。相对于上文中介绍的`HGETALL`、`HKEYS`以及`HVALS`命令，在哈希表中域数量较多的情况下不会造成阻塞，进而相对更加安全。
+`HSCAN`命令与前文中介绍过的[`SCAN`](https://www.ghosind.com/2020/06/30/redis-keys#scan)命令类似，它用于增量式的迭代获取哈希表中的所有域，并返回其域名称及其值。相对于上文中介绍的`HGETALL`、`HKEYS`以及`HVALS`命令，在哈希表中域数量较多的情况下不会造成阻塞，进而相对更加安全。
 
 ```
 HSCAN key cursor [MATCH pattern] [COUNT count]
