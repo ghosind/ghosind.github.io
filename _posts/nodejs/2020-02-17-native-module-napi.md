@@ -60,9 +60,10 @@ napi_value greeting(napi_env env, napi_callback_info info) {
 
 ```c
 napi_status napi_create_string_utf8(napi_env env,
-    const char *str,
-    size_t length,
-    napi_value* result);
+  const char *str,
+  size_t length,
+  napi_value* result
+);
 ```
 
 - `env`：传递当前VM的上下文信息
@@ -140,9 +141,10 @@ typedef struct {
 
 ```c
 napi_status napi_define_properties(napi_env env,
-    napi_value object,
-    size_t property_count,
-    const napi_property_descriptor *properties);
+  napi_value object,
+  size_t property_count,
+  const napi_property_descriptor *properties
+);
 ```
 
 - `object`：需要定义属性的Javascript对象

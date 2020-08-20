@@ -42,7 +42,7 @@ napi_status napi_get_cb_info(
 );
 ```
 
-需要注意的是，若参数的个数大于请求的数量`argc`，将只复制`argc`的值所指定数量的参数只`argv`中。例如在下列代码中将请求的参数个数`argc`的值设为0，后续调用`napi_typeof`时将得到`napi_invalid_arg`错误，原因是未复制参数至buffer中。若实际的参数个数小于请求的数量，将复制全部的参数并使用`napi_value`类型所表示的`undefined`值填充。
+需要注意的是，若参数的个数大于请求的数量`argc`，将只复制`argc`的值所指定数量的参数至`argv`中。例如在下列代码中将请求的参数个数`argc`的值设为0，后续调用`napi_typeof`时将得到`napi_invalid_arg`错误，原因是未复制参数至buffer中。若实际的参数个数小于请求的数量，将复制全部的参数并使用`napi_value`类型所表示的`undefined`值填充。
 
 在了解了`napi_get_cb_info`方法后，我们就可以使用它来获取`add`方法的参数了。对于`add`方法，需要两个数值类型的参数，所以在调用`napi_get_cb_info`方法前，我们声明了`size_t`类型的`argc`变量用于存放我们需要的参数个数以及接收实际的参数个数，并声明了`napi_value`类型的数组`argv`用于存放参数的值，其长度为我们需要的参数个数的值。
 
