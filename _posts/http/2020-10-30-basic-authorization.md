@@ -123,5 +123,5 @@ HTTP/1.1 403 Forbidden
 - [HTTP Authentication Schemes - IANA]
 - [Authentication - MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication)
 
-[RFC 7617 - IETF]: https://tools.ietf.org/html/rfc7617
+[RFC7617 - IETF]: https://tools.ietf.org/html/rfc7617
 [HTTP Authentication Schemes - IANA]: https://www.iana.org/assignments/http-authschemes/http-authschemes.xhtml
