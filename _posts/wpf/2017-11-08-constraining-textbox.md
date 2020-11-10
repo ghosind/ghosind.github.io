@@ -2,6 +2,7 @@
 layout: post
 title: WPF开发之限制输入的控件
 date: 2017-11-08
+last_modified_at: 2020-11-10
 categories: [WPF]
 tags: [WPF, TextInput, TextBox, ComboBox, Reflection]
 excerpt: 通过事件及正则表达式构建一个只能输入限定格式的TextBox及ComboBox。
@@ -19,7 +20,7 @@ excerpt: 通过事件及正则表达式构建一个只能输入限定格式的Te
 
 ## 0x01 实现过程
 
-因为要将这个功能直接封装成一个控件供后面使用，就直接从System.Windows.Controls.TextBox继承，这样就不用去实现文本框的具体细节了，同理ComboBox也是直接继承自System.Windows.Controls.ComboBox。因为需求中需要满足多种限定条件，如输入浮点数等，于是就开放了一个属性供选择限定的类型，再根据选择的类型确定正则表达式。其实也可以直接开放正则表达式字符串属性可以设置，但是当时因为写好了又懒得改就没有再去修改了（其实不就是把private改public，懒死算了）。
+因为要将这个功能直接封装成一个控件供后面使用，就直接从`System.Windows.Controls.TextBox`继承，这样就不用去实现文本框的具体细节了，同理`ComboBox`也是直接继承自`System.Windows.Controls.ComboBox`。因为需求中需要满足多种限定条件，如输入浮点数等，于是就开放了一个属性供选择限定的类型，再根据选择的类型确定正则表达式。其实也可以直接开放正则表达式字符串属性可以设置，但是当时因为写好了又懒得改就没有再去修改了（其实不就是把`private`改`public`，懒死算了）。
 
 ```cs
 if (RegexString == null)
@@ -46,7 +47,7 @@ if (RegexString == null)
 }
 ```
 
-有了正则表达式字符串后，就要开始实现限制输入了。最开始想通过TextChanged事件来实现，但是发现有些情况下的结果不理想（但是由于时间过长忘记了），于是就转用PreviewTextInput事件来实现。在PreviewTextInput事件的TextCompositionEventArgs参数中有Text这个属性，也就是当前输入的文本，不是全部的。而控件本身的Text属性中存储的就是输入前的文本，于是就想到`this.Text + e.Text`不就是完整的文本，马上就试了一下,发现是可行的。
+有了正则表达式字符串后，就要开始实现限制输入了。最开始想通过`TextChanged`事件来实现，但是发现有些情况下的结果不理想（但是由于时间过长忘记了），于是就转用`PreviewTextInput`事件来实现。在`PreviewTextInput`事件的`TextCompositionEventArgs`参数中有`Text`这个属性，也就是当前输入的文本，不是全部的。而控件本身的`Text`属性中存储的就是输入前的文本，于是就想到`this.Text + e.Text`不就是完整的文本，马上就试了一下,发现是可行的。
 
 ```cs
 if (!Regex.IsMatch(this.Text + e.Text, RegexString))
@@ -55,7 +56,7 @@ if (!Regex.IsMatch(this.Text + e.Text, RegexString))
 }
 ```
 
-实现后试了几次后还是发现了一个问题，在非最末端输入会得到错误的结果，于是又开始尝试能不能得到输入的位置。于是在调试的过程中发现了TextBox的CareIndex属性（没错。。。我是在调试的时候看到的。。。懒得去看文档），于是就变成了这样。
+实现后试了几次后还是发现了一个问题，在非最末端输入会得到错误的结果，于是又开始尝试能不能得到输入的位置。于是在调试的过程中发现了`TextBox`的`CaretIndex`属性（没错。。。我是在调试的时候看到的。。。懒得去看文档），于是就变成了这样。
 
 ```cs
 if (!Regex.IsMatch(this.Text.Insert(this.CaretIndex, e.Text), RegexString))
@@ -64,16 +65,22 @@ if (!Regex.IsMatch(this.Text.Insert(this.CaretIndex, e.Text), RegexString))
 }
 ```
 
-然后很愉快地在任何地方输入都对了～但是还没完。。。发现在选中一段文字后输入（覆盖掉原来选中的）以及删除时还是会错啊。。。又在调试的时候找啊找，于是找到了SelectionLength属性，它是选中的文本长度。然后就很愉快地解决了这个问题。
+然后很愉快地在任何地方输入都对了～但是还没完。。。发现在选中一段文字后输入（覆盖掉原来选中的）以及删除时还是会错啊。。。又在调试的时候找啊找，于是找到了`SelectionLength`属性，它是选中的文本长度。然后就很愉快地解决了这个问题。
 
 ```cs
 private void PreviewTextInput(object sender, TextCompositionEventArgs e)
 {
     try
     {
-        if (!Regex.IsMatch(this.Text.Remove(this.CaretIndex, 
-            this.Text.Length >= this.CaretIndex + this.SelectionLength ? this.SelectionLength : 0).
-            Insert(this.CaretIndex, e.Text), RegexString))
+        if (!Regex.IsMatch(
+            this.Text.Remove(
+                this.CaretIndex,
+                this.Text.Length >= this.CaretIndex + this.SelectionLength
+                    ? this.SelectionLength
+                    : 0
+            ).Insert(this.CaretIndex, e.Text),
+            RegexString)
+        )
         {
             e.Handled = true;
         }
@@ -84,11 +91,13 @@ private void PreviewTextInput(object sender, TextCompositionEventArgs e)
 }
 ```
 
-然而，没愉快多久，问题又来了。PreviewTextInput在粘贴的时候不管用，而且需求要求不让用粘贴。查了一下资料后发现PreviewExecutedEvent可以实现拦截粘贴操作，但是TextBox不能直接添加这个事件，就找到了可以用AddHandler来添加，具体代码如下。
+然而，没愉快多久，问题又来了。`PreviewTextInput`在粘贴的时候不管用，而且需求要求不让用粘贴。查了一下资料后发现`PreviewExecutedEvent`可以实现拦截粘贴操作，但是`TextBox`不能直接添加这个事件，就找到了可以用`AddHandler`来添加，具体代码如下。
 
 ```cs
-this.AddHandler(System.Windows.Input.CommandManager.PreviewExecutedEvent, 
-    new ExecutedRoutedEventHandler(this.PreviewExecuted));  // 在构造函数中加入
+this.AddHandler(
+    System.Windows.Input.CommandManager.PreviewExecutedEvent, 
+    new ExecutedRoutedEventHandler(this.PreviewExecuted)
+);  // 在构造函数中加入
 
 private void PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
 {
@@ -99,29 +108,38 @@ private void PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
 }
 ```
 
-至此，就差不多算是完成了一个可以限制输入的TextBox的控件。
+至此，就差不多算是完成了一个可以限制输入的`TextBox`的控件。
 
 ## 0x02 实现ComboBox
 
-实现ComboBox的过程中发现ComboBox没有CareIndex和Selection，但是在调试的时候发现ComboBox内部有个私有的TextBox，所以就用反射取得了TextBox。在取得ComboBox后基本实现方法就和TextBox一致了。
+实现`ComboBox`的过程中发现`ComboBox`没有`CaretIndex`和`Selection`，但是在调试的时候发现`ComboBox`内部有个私有的`TextBox`，所以就用反射取得了`TextBox`。在取得`ComboBox`后基本实现方法就和`TextBox`一致了。
 
 ```cs
 private void PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
 {
-    PropertyInfo property = this.GetType().GetRuntimeProperties().
-        Where(p => p.Name.Contains("TextBox")).FirstOrDefault();
+    PropertyInfo property = this.GetType()
+        .GetRuntimeProperties()
+        .Where(p => p.Name.Contains("TextBox"))
+        .FirstOrDefault();
     TextBox tb = property.GetValue(this) as TextBox;
     try
     {
-        if (!Regex.IsMatch(this.Text.Remove(tb.CaretIndex, 
-            this.Text.Length >= tb.CaretIndex + tb.SelectionLength ? tb.SelectionLength : 0).
-            Insert(tb.CaretIndex, e.Text), RegexString))
+        if (!Regex.IsMatch(
+            this.Text.Remove(
+                tb.CaretIndex, 
+                this.Text.Length >= tb.CaretIndex + tb.SelectionLength
+                    ? tb.SelectionLength
+                    : 0
+                ).Insert(tb.CaretIndex, e.Text),
+            RegexString)
+        )
         {
             e.Handled = true;
         }
     }
     catch (Exception)
     {
+        // 异常处理
     }
 }
 
@@ -137,3 +155,11 @@ private void PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
 ## 0x03 结束语
 
 在实现过程中查阅了不少资料，因为写这篇文章的时候离写这些控件已经很挺长一段时间了，也就忘了其中很多的过程了，在文章中也就没有写出来。这些控件的实现方法也有很多，我也只是写出了我自己实现的方式，也希望能够帮助到看到这篇文章的人。因为接触WPF的时间不长，可能会犯一些错误，也希望各位能够指出。
+
+## 0x04 2020-11-10更新
+
+在使用输入法输入的时候，可能会出现限制失效的情况，这时候可以通过在XAML文件中设置文本框的属性`input:InputMethod.IsInputMethodEnabled="False"`禁用输入法即可，例如：
+
+```xml
+<TextBox input:InputMethod.IsInputMethodEnabled="False" />
+```
