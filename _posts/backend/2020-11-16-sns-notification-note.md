@@ -46,6 +46,7 @@ const params = {
         customId: '123',
       }
     }),
+    // 即FCM
     GCM: JSON.stringify({
       notification: {
         title: '你好，Android',
