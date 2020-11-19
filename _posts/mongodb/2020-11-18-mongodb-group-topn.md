@@ -97,7 +97,7 @@ db.user.aggregate([
 
 上面的输出结果中仍保持着分组的形式，如果需要将结果转换为文档的数组，可以另外使用`$unwind`以及`$replaceRoot`运算符。例如下面的例子：
 
-```json
+```js
 db.user.aggregate([
   // $match, $sort, $group, $project
   {
