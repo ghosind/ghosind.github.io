@@ -2,10 +2,13 @@
 layout: post
 title: Redis命令介绍之字符串键的基本操作
 date: 2020-06-22
+last_modified_at: 2021-02-23
 categories: [Redis]
 tags: [Redis, string]
 excerpt: 介绍并以示例的形式展示Redis中字符串相关的SET、GET、DEL、EXPIRE、TTL、MSET、MGET等命令。
 ---
+
+> - 2021-02-23更新：`SET`命令新增`EXAT`、`PXAT`以及`GET`参数；新增`GETDEL`、`GETEX`命令。
 
 Redis是一个当前非常流行的开源内存数据库，它支持包括字符串（String）、列表（List）、哈希集合（Hash）、集合（Set）、有序集合（Sorted Set）五种数据类型。在接下来一系列文章中，将在Redis支持的数据类型的基础上，介绍相关的操作命令。作为开篇，本文将先介绍字符串类型的操作命令。
 
@@ -16,24 +19,31 @@ Redis是一个当前非常流行的开源内存数据库，它支持包括字符
 `SET`命令为指定名称的键设置字符串类型的值，若键已存在则覆盖旧值（未指定特定参数的情况下）。
 
 ```
-SET key value [EX seconds|PX milliseconds] [NX|XX] [KEEPTTL]
+SET key value [EX seconds|PX milliseconds] [EXAT timestamp|PXAT milliseconds-timestamp] [NX|XX] [KEEPTTL]
 ```
 
 ### 可选参数
 
 `SET`命令有`EX`、`PX`、`NX`、`XX`以及`KEEPTTL`五个可选参数，其中`KEEPTTL`为6.0版本添加的可选参数，其它为2.6.12版本添加的可选参数。
 
-- `EX seconds` 以秒为单位设置过期时间
-- `PX milliseconds` 以毫秒为单位设置过期时间
-- `NX` 键不存在的时候设置键值
-- `XX` 键存在的时候设置键值
-- `KEEPTTL` 保留设置前指定键的生存时间
+- `EX seconds`：以秒为单位设置过期时间
+- `PX milliseconds`：以毫秒为单位设置过期时间
+- `EXAT timestamp`：设置以秒为单位的UNIX时间戳所对应的时间为过期时间
+- `PXAT milliseconds-timestamp`：设置以毫秒为单位的UNIX时间戳所对应的时间为过期时间
+- `NX`：键不存在的时候设置键值
+- `XX`：键存在的时候设置键值
+- `KEEPTTL`：保留设置前指定键的生存时间
+- `GET`：返回指定键原本的值，若键不存在时返回`nil`
 
 `SET`命令使用`EX`、`PX`、`NX`参数，其效果等同于`SETEX`、`PSETEX`、`SETNX`命令。根据官方文档的描述，未来版本中`SETEX`、`PSETEX`、`SETNX`命令可能会被淘汰。
+
+`EXAT`、`PXAT`以及`GET`为Redis 6.2新增的可选参数。
 
 ### 返回值
 
 设置成功则返回`OK`；返回`nil`为未执行`SET`命令，如不满足`NX`、`XX`条件等。
+
+若使用`GET`参数，则返回该键原来的值，或在键不存在时返回`nil`。
 
 ### 示例
 
@@ -73,6 +83,16 @@ redis> SET greeting "hello redis" NX
 OK
 ```
 
+使用`EXAT`参数设置过期时间（`PXAT`参数同理）：
+
+```sh
+# 假设当前时间为1577836800 (2020-01-01T00:00:00)
+redis> SET greeting "hello world" EXAT 1577836900
+OK
+redis> TTL greeting
+(integer) 99
+```
+
 使用`KEEPTTL`参数将会保留原键值对的生存时间：
 
 ```sh
@@ -84,6 +104,15 @@ redis> SET greeting "hello redis" KEEPTTL
 OK
 redis> TTL greeting
 (integer) 97
+```
+
+使用`GET`参数返回键原值：
+
+```sh
+redis> SET greeting "hello world" GET
+(nil)
+redis> SET greeting "hello redis" GET
+"hello world"
 ```
 
 ## GET
@@ -379,6 +408,80 @@ redis> MGET key1 key2 key3
 1) "value1"
 2) "value2"
 3) (nil)
+```
+
+## GETDEL
+
+`GETDEL`命令是Redis 6.2.0中新增的命令，它用于获取指定键值对的值，并在获取后将其删除（仅限于该键值对类型为字符串时）。
+
+```
+GETDEL key
+```
+
+### 返回值
+
+`GETDEL`命令将在键存在时返回其原来的值，或在不存在时返回`nil`。若键不是字符串类型，使用该命令将返回错误。
+
+### 示例
+
+```sh
+redis> SET greeting "hello world"
+OK
+redis> GETDEL greeting
+"hello world"
+redis> GET greeting
+(nil)
+# 不存在的键将返回nil
+redis> GETDEL greeting
+(nil)
+```
+
+## GETEX
+
+`GETEX`命令同样也是Redis 6.2.0中新增的命令，它用于获取指定键值对的值，并设置或移除该键值对的过期时间。
+
+```
+GETEX key [EX seconds|PX milliseconds|EXAT timestamp|PXAT milliseconds-timestamp|PERSIST]
+```
+
+`GETEX`命令支持`EX`、`PX`、`EXAT`、`PXAT`以及`PERSIST`，分别为：
+
+- `EX`：设置以秒为单位的过期时间
+- `PX`：设置以毫秒为单位的过期时间
+- `EXAT`：设置以秒为单位的UNIX时间戳所对应的时间为过期时间
+- `PXAT`：设置以毫秒为单位的UNIX时间戳所对应的时间为过期时间
+- `PERSIST`：移除键值对关联的过期时间
+
+### 返回值
+
+当键值对存在且为字符串类型时`GETEX`命令将返回其值，若不存在则返回`nil`。
+
+### 示例
+
+```sh
+redis> SET greeting "hello world"
+OK
+redis> TTL greeting
+(integer) -1
+redis> GETEX greeting EX 100
+"hello world"
+redis> TTL greeting
+(integer) 99
+redis> GETEX greeting PERSIST
+"hello world"
+redis> TTL greeting
+(integer) -1
+```
+
+`GETEX`未携带参数时效果等同于GET命令：
+
+```sh
+redis> SET greeting "hello world"
+OK
+redis> GETEX greeting
+"hello world"
+redis> TTL greeting
+(integer) -1
 ```
 
 ## 结束语
