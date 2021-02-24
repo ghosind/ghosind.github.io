@@ -2,14 +2,34 @@
 layout: post
 title: Redis命令介绍之哈希的操作命令
 date: 2020-07-13
+last_modified_at: 2021-02-24
 categories: [Redis]
 tags: [Redis, hash]
 excerpt: 介绍并以示例的形式展示Redis中哈希表操作的命令，包括HSET、HGET、HLEN、HDEL等。
 ---
 
+> - 2021-02-24更新：增加Redis 6.2新增的`HRANDFIELD`命令。
+
 在之前的文章中，我们介绍了Redis中有关于字符串（string）以及列表（list）类型的命令，今天我们来介绍Redis中另外一种类型——哈希表（hash）。哈希表还被称之为散列、字典等，我们在本文中便称它为哈希表。它是一个字符串类型`field`（下文中称之为域）与其关联的值（同样为字符串类型）的映射表。
 
 哈希表的命令与字符串及键操作命令相似，其底层结构的实现也与Redis键空间相类似，所以文中在碰到与之前相类似的命令时将只做比较简单的介绍。
+
+- [`HSET`](#hset)
+- [`HGET`](#hget)
+- [`HLEN`](#hlen)
+- [`HDEL`](#hdel)
+- [`HEXISTS`](#hexists)
+- [`HSETNX`](#hsetnx)
+- [`HMSET`](#hmset)
+- [`HMGET`](#hmget)
+- [`HGETALL`](#hgetall)
+- [`HKEYS`](#hkeys)
+- [`HVALS`](#hvals)
+- [`HSCAN`](#hscan)
+- [`HINCRBY`](#hincrby)
+- [`HINCRBYFLOAT`](#hincrbyfloat)
+- [`HSTRLEN`](#hstrlen)
+- [`HRANDFIELD`](#hrandfield)
 
 ## HSET
 
@@ -340,6 +360,74 @@ redis> HSTRLEN students s02
 # 不存在的域
 redis> HSTRLEN students s03
 (integer) 0
+```
+
+## HRANDFIELD
+
+`HRANDFIELD`命令是Redis 6.2中新增的命令，用于随机获取指定哈希表中的域。
+
+```
+HRANDFIELD key [count [WITHVALUES]]
+```
+
+当未指定参数时，`HRANDFIELD`命令将返回哈希表中随机一个域。另外，`HRANDFIELD`命令支持两种形式的参数，分别用于指定获取的域数量或指定数量并返回其对应的值：
+
+- `<count>`：指定获取的域数量，当该值大于哈希表中域总数时，将只返回存在的所有域。若该值为负数时，将返回该值对应的绝对值数量的域（即使大于总数），且可能存在重复。
+- `<count> WITHVALUES`：指定获取的域数量，并返回其对应的值。
+
+### 返回结果
+
+若未指定返回数量时，将随机取出并以字符串的形式返回哈希表中的一个域，或在哈希表不存在时返回`nil`。
+
+若指定返回数量，将以数组的形式返回取出的域。在使用`WITHVALUES`参数时，将以域、值交替的形式在返回的数组中表示。
+
+### 示例
+
+在不设置参数的情况下，将随机返回一个哈希表中存在的域：
+
+```sh
+redis> HSET students s01 "Zhang San" s02 "Li Si" s03 "Wang Wu"
+(integer) 3
+redis> HRANDFIELD students
+"s02"
+redis> HRANDFIELD students
+"s01"
+```
+
+返回指定数量的域：
+
+```sh
+redis> HRANDFIELD students 0
+(empty array)
+redis> HRANDFIELD students 2
+1) "s01"
+2) "s03"
+# 超出哈希表的总数量时只返回哈希表中全部的域
+redis> HRANDFIELD students 6
+1) "s01"
+2) "s02"
+3) "s03"
+# 负数值将可能存在重复
+redis> HRANDFIELD student -2
+1) "s02"
+2) "s02"
+redis> HRANDFIELD student -6
+1) "s03"
+2) "s02"
+3) "s03"
+4) "s02"
+5) "s02"
+6) "s01"
+```
+
+使用`WITHVALUES`参数返回对应的值
+
+```sh
+redis> HRANDFIELD students 2 WITHVALUES
+1) "s02"
+2) "Li Si"
+3) "s03"
+4) "Wang Wu"
 ```
 
 ## 结束语
