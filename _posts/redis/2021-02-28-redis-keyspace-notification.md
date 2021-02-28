@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Redis命令介绍之有序集合的操作命令（第二部分）
+title: Redis键空间通知（Keyspace Notification）
 date: 2021-02-28
 categories: [Redis]
 tags: [Redis, notification, 事件通知]
