@@ -3,11 +3,11 @@ layout: post
 title: HTTP认证之基本认证
 date: 2020-10-30
 categories: HTTP
-tags: [HTTP, Authorization, Basic Authorization]
-excerpt: 简单介绍HTTP协议中的基本认证（Basic Authorization）。
+tags: [HTTP, Authentication, Basic Authentication]
+excerpt: 简单介绍HTTP协议中的基本认证（Basic Authentication
 ---
 
-HTTP 基本认证（Basic Authorization）是在[RFC7617 - IETF]中定义的一种认证方式，它使用以Base64编码的用户ID/密码对作为用户的身份凭证。由于HTTP Basic认证是以明文的形式传输用户ID以及密码（Base64是一种可逆的编码方式），在未搭配HTTPS的情况下使用是不安全的。
+HTTP 基本认证（Basic Authentication）是在[RFC7617 - IETF]中定义的一种认证方式，它使用以Base64编码的用户ID/密码对作为用户的身份凭证。由于HTTP Basic认证是以明文的形式传输用户ID以及密码（Base64是一种可逆的编码方式），在未搭配HTTPS的情况下使用是不安全的。
 
 HTTP Basic认证主要通过HTTP的`WWW-Authenticate`响应头部以及`Authorization`请求头部进行实现，其流程大致为：
 
