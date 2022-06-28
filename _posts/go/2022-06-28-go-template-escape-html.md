@@ -12,7 +12,7 @@ excerpt: 在使用Golang标准库的html/template包时，通过自定义函数�
 ```html
 <body>
   <main>
-    {{.Content}}
+    {% raw %}{{.Content}}{% endraw %}
   </main>
 </body>
 ```
@@ -89,8 +89,8 @@ tpl.Execute(buf, map[string]string{
 ```html
 <body>
   <main>
-    <div>{{unescapeHTML .Content}}</div>
-    <div>{{.Content}}</div>
+    <div>{% raw %}{{unescapeHTML .Content}}{% endraw %}</div>
+    <div>{% raw %}{{.Content}}{% endraw %}</div>
   </main>
 </body>
 ```
