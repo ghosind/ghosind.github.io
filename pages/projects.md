@@ -7,16 +7,11 @@ permalink: /projects
 ## Open Source Projects
 
 - [dvm](https://github.com/ghosind/dvm): A simple, lightweight, and powerful Deno Version Manager.
-
-## Contributed Projects
-
-- [FatCoupon](https://fatcoupon.com): Automatic Promo Codes and Amazing Deals.
-- [FoodiEats](https://foodieats.io): Save time, satisfy your cravings & earn rewards with your favorite restaurants at your fingertips.
-- [Vibe](https://vibeapp.in): Share daily moments with your friends and campus.
-- [Timepop](https://timepop.app): Timepop is a free app that takes a refreshing approach to inspire you to focus on what’s coming up, rather than looking at the past. Literally, you scroll up to see the future!
+- [node-dynamic-buffer](https://github.com/ghosind/node-dynamic-buffer): An automatically resizing storage size buffer type for Node.js that is based on Node.js builtin Buffer.
+- [Jekyll-Paper](https://github.com/ghosind/Jekyll-Paper-Github): A simple Jekyll theme.
 
 ## Tools
 
-- [k8s-mac-docker-desktop](https://github.com/ghosind/k8s-mac-docker-desktop): 解决Docker Desktop for Mac无法开启Kubernetes问题。
-- [JSON Formatter](/tools/json-formatter)
-- [JWT Decoder](/tools/jwt-decoder)
+- [k8s-mac-docker-desktop](https://github.com/ghosind/k8s-mac-docker-desktop): Docker Desktop for Mac依赖镜像快速拉取工具。
+- [JSON Formatter](/tools/json-formatter): JSON格式化工具。
+- [JWT Decoder](/tools/jwt-decoder): JWT解析工具。
