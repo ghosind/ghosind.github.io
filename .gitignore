@@ -10,3 +10,7 @@ Gemfile.lock
 
 # Mac
 .DS_Store
+
+# Dependencies
+.bundle
+vendor
