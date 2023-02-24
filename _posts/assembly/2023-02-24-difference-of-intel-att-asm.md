@@ -85,7 +85,7 @@ mov eax, [var]  ; Intel
 
 下面的例子中，同时使用了基址寄存器与常量进行寻址的操作，其中常量可以为一个立即数，也可以是一个定义的变量。
 
-```
+```nasm
 movl 4(%ebx), %eax  ; AT&T
 mov eax, [ebx + 4]  ; Intel
 
