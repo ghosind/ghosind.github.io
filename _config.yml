@@ -36,7 +36,7 @@ paginate_path: "/page:num/"
 
 permalink: /:year/:month/:day/:title
 
-google_analytics: UA-87927057-1
+google_analytics: G-T9NVF27HB1
 
 sass:
   sass_dir: _sass
