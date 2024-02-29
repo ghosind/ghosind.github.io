@@ -17,7 +17,7 @@ gRPC的元数据分为两种类型，分别是`Header`及`Trailer`。`Header`可
 
 ## 客户端处理
 
-在gRPC客户端中，无论是一元调用还是流调用，可以比较简单的通过`google.golang.org/grpc/metadata`包提供的`AppendToOutgoingContext`或`NewOutgoingContext`方法向请求中加入头部元数据，例如以下几种方式：
+在gRPC客户端中，无论是一元调用还是流调用，可以比较简单地通过`google.golang.org/grpc/metadata`包提供的`AppendToOutgoingContext`或`NewOutgoingContext`方法向请求中加入头部元数据，例如以下几种方式：
 
 ```go
 // 通过metadata创建新的context
@@ -39,7 +39,7 @@ resp, err := cli.UnaryCall(ctx, req, grpc.Header(&header), grpc.Trailer(&trailer
 // 处理header或trailer
 ```
 
-而对于任意方式的流调用，都可以简单的通过流调用返回流的`Header`或`Trailer`方法获得元数据：
+而对于任意方式的流调用，都可以简单地通过流调用返回流的`Header`或`Trailer`方法获得元数据：
 
 ```go
 stream, err := cli.StreamCall(ctx)
